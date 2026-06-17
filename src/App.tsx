@@ -3,6 +3,7 @@ import { loadLessons } from './lessons/loadLessons';
 import { Canvas } from './components/Canvas/Canvas';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { LessonPanel } from './components/LessonPanel/LessonPanel';
+import { useProgress } from './progress/useProgress';
 import styles from './App.module.css';
 
 const lessons = loadLessons();
@@ -11,6 +12,7 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [selectedId, setSelectedId] = useState(lessons[0]?.id ?? '');
   const [userCSS, setUserCSS] = useState(lessons[0]?.startingCSS ?? '');
+  const { completedIds, markComplete, isCompleted } = useProgress();
 
   const currentIndex = lessons.findIndex((l) => l.id === selectedId);
   const currentLesson = lessons[currentIndex] ?? lessons[0];
@@ -54,6 +56,7 @@ function App() {
           selectedId={selectedId}
           onSelect={handleSelectLesson}
           isOpen={sidebarOpen}
+          completedIds={completedIds}
         />
         <Canvas
           lessonId={currentLesson.id}
@@ -69,6 +72,8 @@ function App() {
           onCSSChange={setUserCSS}
           onPrev={handlePrev}
           onNext={handleNext}
+          isCompleted={isCompleted(currentLesson.id)}
+          onComplete={markComplete}
         />
       </main>
     </div>

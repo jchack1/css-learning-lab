@@ -51,6 +51,25 @@ Navigation strip at the top of the lesson panel shows current position (`3 / 9`)
 
 ---
 
+### 2026-06-17 — Lesson completion tracking
+
+**Progress storage** (`src/progress/progressStorage.ts`)
+Reads and writes completed lesson IDs to `localStorage` under the key `css-lab-completions`. Handles missing/malformed storage values gracefully.
+
+**useProgress hook** (`src/progress/useProgress.ts`)
+React hook exposing `completedIds`, `markComplete(id)`, and `isCompleted(id)`. State is initialised from localStorage on mount and kept in sync on each completion.
+
+**Sidebar completion indicators** (`src/components/Sidebar/`)
+Each lesson now shows `✓` (green) when completed or `○` (faint) when not. The completion mark sits to the left of the lesson title alongside the existing difficulty dot.
+
+**Lesson page completion status** (`src/components/PropertyInfo/`)
+A small status line below the lesson title reads `✓ Completed` (green) or `○ Not completed yet` (faint grey), updating immediately after the user solves the challenge.
+
+**Validation integration** (`src/components/LessonPanel/LessonPanel.tsx`)
+`onComplete(lesson.id)` is called only when `validateCSS` returns `passed: true` — completion is never awarded for opening, viewing examples, or clicking buttons.
+
+---
+
 ### 2026-06-17 — Code review fixes
 
 **Validator: value check scoped to declaration** (`src/engine/validator.ts`)

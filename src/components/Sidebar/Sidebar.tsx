@@ -6,6 +6,7 @@ interface SidebarProps {
   selectedId: string;
   onSelect: (id: string) => void;
   isOpen: boolean;
+  completedIds: string[];
 }
 
 interface LessonGroup {
@@ -29,7 +30,7 @@ function groupByCategory(lessons: Lesson[]): LessonGroup[] {
   return groups;
 }
 
-export function Sidebar({ lessons, selectedId, onSelect, isOpen }: SidebarProps) {
+export function Sidebar({ lessons, selectedId, onSelect, isOpen, completedIds }: SidebarProps) {
   const groups = groupByCategory(lessons);
 
   return (
@@ -41,17 +42,23 @@ export function Sidebar({ lessons, selectedId, onSelect, isOpen }: SidebarProps)
         {groups.map(({ category, lessons: groupLessons }) => (
           <div key={category} className={styles.group}>
             <p className={styles.categoryLabel}>{category}</p>
-            {groupLessons.map((lesson) => (
-              <button
-                key={lesson.id}
-                className={lesson.id === selectedId ? styles.activeItem : styles.item}
-                onClick={() => onSelect(lesson.id)}
-                tabIndex={isOpen ? 0 : -1}
-              >
-                <span className={styles.lessonTitle}>{lesson.title}</span>
-                <span className={`${styles.dot} ${styles[lesson.difficulty]}`} />
-              </button>
-            ))}
+            {groupLessons.map((lesson) => {
+              const done = completedIds.includes(lesson.id);
+              return (
+                <button
+                  key={lesson.id}
+                  className={lesson.id === selectedId ? styles.activeItem : styles.item}
+                  onClick={() => onSelect(lesson.id)}
+                  tabIndex={isOpen ? 0 : -1}
+                >
+                  <span className={`${styles.completionMark} ${done ? styles.completionMarkDone : ''}`}>
+                    {done ? '✓' : '○'}
+                  </span>
+                  <span className={styles.lessonTitle}>{lesson.title}</span>
+                  <span className={`${styles.dot} ${styles[lesson.difficulty]}`} />
+                </button>
+              );
+            })}
           </div>
         ))}
       </div>

@@ -72,9 +72,22 @@
   color: var(--color-accent);
 }
 
+.completionMark {
+  font-size: 0.6rem;
+  flex-shrink: 0;
+  margin-right: 0.4rem;
+  color: var(--color-text-faint);
+  line-height: 1;
+}
+
+.completionMarkDone {
+  color: #4ade80;
+}
+
 .lessonTitle {
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 1;
 }
 
 .dot {

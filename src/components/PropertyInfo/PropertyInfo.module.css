@@ -63,6 +63,21 @@
   border: 1px solid rgba(251, 113, 133, 0.25);
 }
 
+.completionStatus {
+  margin: -0.25rem 0 1rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.completionDone {
+  color: #4ade80;
+}
+
+.completionPending {
+  color: var(--color-text-faint);
+}
+
 .description {
   margin: 0 0 1.25rem;
   font-size: 0.875rem;

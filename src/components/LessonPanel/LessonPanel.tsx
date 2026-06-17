@@ -14,6 +14,8 @@ interface LessonPanelProps {
   onCSSChange: (css: string) => void;
   onPrev: () => void;
   onNext: () => void;
+  isCompleted: boolean;
+  onComplete: (id: string) => void;
 }
 
 export function LessonPanel({
@@ -24,6 +26,8 @@ export function LessonPanel({
   onCSSChange,
   onPrev,
   onNext,
+  isCompleted,
+  onComplete,
 }: LessonPanelProps) {
   const [validationResult, setValidationResult] = useState<ValidationResult | null>(null);
 
@@ -35,6 +39,9 @@ export function LessonPanel({
   const handleCheck = () => {
     const result = validateCSS(userCSS, lesson.expectedCSS, lesson.targetSelector);
     setValidationResult(result);
+    if (result.passed) {
+      onComplete(lesson.id);
+    }
   };
 
   return (
@@ -62,7 +69,7 @@ export function LessonPanel({
       </div>
 
       <div className={styles.scroll}>
-        <PropertyInfo lesson={lesson} />
+        <PropertyInfo lesson={lesson} isCompleted={isCompleted} />
         <CodeEditor
           css={userCSS}
           onChange={handleCSSChange}

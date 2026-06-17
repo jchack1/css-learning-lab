@@ -3,9 +3,10 @@ import styles from './PropertyInfo.module.css';
 
 interface PropertyInfoProps {
   lesson: Lesson;
+  isCompleted: boolean;
 }
 
-export function PropertyInfo({ lesson }: PropertyInfoProps) {
+export function PropertyInfo({ lesson, isCompleted }: PropertyInfoProps) {
   return (
     <div className={styles.info}>
       <div className={styles.header}>
@@ -17,6 +18,10 @@ export function PropertyInfo({ lesson }: PropertyInfoProps) {
           </span>
         </div>
       </div>
+
+      <p className={`${styles.completionStatus} ${isCompleted ? styles.completionDone : styles.completionPending}`}>
+        {isCompleted ? '✓ Completed' : '○ Not completed yet'}
+      </p>
 
       <p className={styles.description}>{lesson.description}</p>
 
