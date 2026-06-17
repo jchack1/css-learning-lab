@@ -1,0 +1,17 @@
+{
+  "id": "grid-template-columns",
+  "title": "grid-template-columns",
+  "category": "Grid",
+  "difficulty": "beginner",
+  "order": 70,
+  "description": "Defines the column structure of a CSS Grid. The fr unit distributes available space proportionally — 1fr means one equal share. Use it to create column layouts without doing the math yourself.",
+  "oldWay": "/* Old float-based 3-column grid */\n.item {\n  float: left;\n  width: calc(33.333% - 14px);\n  margin-right: 20px;\n}\n.item:nth-child(3n) {\n  margin-right: 0;\n}\n/* Don't forget the clearfix hack... */",
+  "modernWay": ".container {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  gap: 1rem;\n}",
+  "html": "<div class=\"container\">\n  <div class=\"item\">1</div>\n  <div class=\"item\">2</div>\n  <div class=\"item\">3</div>\n  <div class=\"item\">4</div>\n  <div class=\"item\">5</div>\n  <div class=\"item\">6</div>\n</div>",
+  "startingCSS": ".container {\n  display: grid;\n  gap: 1rem;\n}\n\n.item {\n  background: #a855f7;\n  color: white;\n  padding: 2rem;\n  border-radius: 8px;\n  text-align: center;\n  font-size: 1.25rem;\n  font-weight: 600;\n}",
+  "challenge": "Create a 3-column grid. Each column should take an equal share of the available space.",
+  "targetSelector": ".container",
+  "expectedCSS": {
+    "grid-template-columns": "1fr 1fr 1fr"
+  }
+}

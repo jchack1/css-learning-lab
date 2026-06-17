@@ -1,0 +1,17 @@
+{
+  "id": "has-selector",
+  "title": ":has()",
+  "category": "Modern CSS",
+  "difficulty": "intermediate",
+  "order": 20,
+  "description": "Selects an element based on what it contains — the CSS parent selector developers have wanted for decades. Style a parent or sibling based on its children's state, with no JavaScript.",
+  "oldWay": "/* CSS alone couldn't do this. Required JS: */\n.item.is-checked {\n  background: #f3e8ff;\n  border-color: #a855f7;\n}\n\n/* ...plus this event listener */\n// input.addEventListener('change', e => {\n//   e.target.closest('.item')\n//     .classList.toggle('is-checked', e.checked);\n// });",
+  "modernWay": ".item:has(input:checked) {\n  background: #f3e8ff;\n  border-color: #a855f7;\n}",
+  "html": "<ul class=\"list\">\n  <li class=\"item\">\n    <input type=\"checkbox\" id=\"t1\" />\n    <label for=\"t1\">Write semantic HTML</label>\n  </li>\n  <li class=\"item\">\n    <input type=\"checkbox\" id=\"t2\" />\n    <label for=\"t2\">Learn modern CSS</label>\n  </li>\n  <li class=\"item\">\n    <input type=\"checkbox\" id=\"t3\" />\n    <label for=\"t3\">Build something cool</label>\n  </li>\n</ul>",
+  "startingCSS": ".list {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 0.5rem;\n}\n\n.item {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  padding: 1rem;\n  background: white;\n  border: 2px solid #e2e8f0;\n  border-radius: 8px;\n  transition: background 0.15s, border-color 0.15s;\n}\n\nlabel {\n  cursor: pointer;\n  font-weight: 500;\n  color: #374151;\n}\n\ninput[type=\"checkbox\"] {\n  width: 18px;\n  height: 18px;\n  accent-color: #a855f7;\n  cursor: pointer;\n  flex-shrink: 0;\n}",
+  "challenge": "When a task's checkbox is checked, give that item a light purple background (`#f3e8ff`) and a purple border (`#a855f7`). Use `:has()` — no JavaScript.",
+  "targetSelector": ".item:has(input:checked)",
+  "expectedCSS": {
+    "background": "#f3e8ff"
+  }
+}

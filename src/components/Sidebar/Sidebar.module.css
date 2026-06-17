@@ -1,0 +1,99 @@
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: width 0.22s ease;
+}
+
+.sidebar.closed {
+  width: 0;
+}
+
+.inner {
+  width: 220px;
+  height: 100%;
+  overflow-y: auto;
+  padding: 0.75rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.inner::-webkit-scrollbar {
+  width: 4px;
+}
+
+.inner::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+.group {
+  margin-bottom: 0.5rem;
+}
+
+.categoryLabel {
+  margin: 0.875rem 1rem 0.3rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-faint);
+}
+
+.item,
+.activeItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding: 0.375rem 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  transition: background 0.12s, color 0.12s;
+  white-space: nowrap;
+}
+
+.item:hover {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+}
+
+.activeItem {
+  background: var(--color-accent-dim);
+  color: var(--color-accent);
+}
+
+.lessonTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+  opacity: 0.6;
+}
+
+.beginner {
+  background: #4ade80;
+}
+
+.intermediate {
+  background: #facc15;
+}
+
+.advanced {
+  background: #fb7185;
+}

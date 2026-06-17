@@ -1,0 +1,25 @@
+{
+  "covered": [
+    "gap",
+    "justify-content",
+    "grid-template-columns",
+    "aspect-ratio",
+    "clamp()",
+    "text-wrap: balance",
+    "container queries (@container)",
+    ":has()",
+    "color-mix()"
+  ],
+  "missing": [
+    "grid-template-areas",
+    "place-items / place-content",
+    "logical properties (margin-inline, padding-block)",
+    "cascade layers (@layer)",
+    "css custom properties (--var)",
+    "min() / max()",
+    "grid-column / grid-row placement",
+    "text-wrap: pretty",
+    "scrollbar-gutter",
+    "@scope"
+  ]
+}

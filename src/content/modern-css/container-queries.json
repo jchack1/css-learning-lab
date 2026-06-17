@@ -1,0 +1,17 @@
+{
+  "id": "container-queries",
+  "title": "@container",
+  "category": "Modern CSS",
+  "difficulty": "intermediate",
+  "order": 30,
+  "description": "Style elements based on their parent container's size — not the viewport. The same component can adapt its layout wherever it's placed, regardless of screen size.",
+  "oldWay": "/* Media queries check viewport width — breaks\n   when the component sits in a narrow column */\n@media (min-width: 600px) {\n  .card { flex-direction: row; }\n}",
+  "modernWay": ".wrapper {\n  container-type: inline-size;\n}\n\n@container (min-width: 300px) {\n  .card {\n    flex-direction: row;\n  }\n}",
+  "html": "<div class=\"scene\">\n  <div class=\"wrapper narrow\">\n    <p class=\"label\">220px container</p>\n    <div class=\"card\">\n      <div class=\"avatar\"></div>\n      <div class=\"info\">\n        <strong>Stacked</strong>\n        <p>Container too narrow for row layout</p>\n      </div>\n    </div>\n  </div>\n  <div class=\"wrapper wide\">\n    <p class=\"label\">380px container</p>\n    <div class=\"card\">\n      <div class=\"avatar\"></div>\n      <div class=\"info\">\n        <strong>Row layout</strong>\n        <p>Container has enough space</p>\n      </div>\n    </div>\n  </div>\n</div>",
+  "startingCSS": ".scene {\n  display: flex;\n  flex-direction: column;\n  gap: 1.5rem;\n}\n\n.wrapper {\n  /* Add container-type: inline-size here */\n  background: #f1f5f9;\n  border-radius: 10px;\n  padding: 1rem;\n}\n\n.narrow { width: 220px; }\n.wide   { width: 380px; }\n\n.label {\n  font-size: 0.7rem;\n  font-weight: 600;\n  color: #94a3b8;\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n  margin: 0 0 0.5rem;\n}\n\n.card {\n  display: flex;\n  flex-direction: column;\n  gap: 0.75rem;\n  padding: 1rem;\n  background: white;\n  border-radius: 8px;\n  border: 2px solid #e2e8f0;\n}\n\n.avatar {\n  width: 44px;\n  height: 44px;\n  border-radius: 50%;\n  background: #a855f7;\n  flex-shrink: 0;\n}\n\n.info strong {\n  display: block;\n  font-size: 0.875rem;\n  margin-bottom: 0.2rem;\n  color: #1f2937;\n}\n\n.info p {\n  margin: 0;\n  font-size: 0.75rem;\n  color: #94a3b8;\n}\n\n@container (min-width: 300px) {\n  .card {\n    flex-direction: row;\n    align-items: center;\n  }\n}",
+  "challenge": "The `@container` rule is already written — but it won't fire until `.wrapper` declares itself as a container. Add `container-type: inline-size` to `.wrapper` and watch the wider card switch to a row layout.",
+  "targetSelector": ".wrapper",
+  "expectedCSS": {
+    "container-type": "inline-size"
+  }
+}

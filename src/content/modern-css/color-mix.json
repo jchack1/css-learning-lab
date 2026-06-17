@@ -1,0 +1,17 @@
+{
+  "id": "color-mix",
+  "title": "color-mix()",
+  "category": "Modern CSS",
+  "difficulty": "intermediate",
+  "order": 10,
+  "description": "Mixes two colors together in a given color space. Replaces Sass/Less color functions like `lighten()` and `darken()` — you can now do this natively in CSS, including mixing with `transparent`.",
+  "oldWay": "/* Sass/LESS only — required a build step */\n$purple: #a855f7;\n\n.tint  { background: lighten($purple, 30%); }\n.shade { background: darken($purple, 20%); }\n.alpha { background: rgba($purple, 0.3); }",
+  "modernWay": "/* Native CSS — no preprocessor needed */\n.tint  { background: color-mix(in srgb, #a855f7 40%, white); }\n.shade { background: color-mix(in srgb, #a855f7 70%, black); }\n.alpha { background: color-mix(in srgb, #a855f7 30%, transparent); }",
+  "html": "<div class=\"palette\">\n  <div class=\"swatch base\">Base color</div>\n  <div class=\"swatch tint\">Tint — mix with white</div>\n  <div class=\"swatch shade\">Shade — mix with black</div>\n  <div class=\"swatch fade\">Fade — mix with transparent</div>\n</div>",
+  "startingCSS": ".palette {\n  display: flex;\n  flex-direction: column;\n  gap: 0.5rem;\n}\n\n.swatch {\n  padding: 1rem 1.25rem;\n  border-radius: 8px;\n  font-weight: 500;\n  font-size: 0.875rem;\n  color: white;\n}\n\n/* These are already set as examples: */\n.base  { background: #a855f7; }\n.shade { background: color-mix(in srgb, #a855f7 65%, black); }\n\n/* Now complete these two: */\n.tint  { background: #a855f7; /* Mix with 50% white */ }\n.fade  { background: #a855f7; color: #374151; /* Mix with 60% transparent */ }",
+  "challenge": "The `.shade` swatch already uses `color-mix()`. Now update `.tint` to use `color-mix(in srgb, #a855f7 50%, white)` to create a lighter purple tint.",
+  "targetSelector": ".tint",
+  "expectedCSS": {
+    "background": "color-mix"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "text-wrap-balance",
+  "title": "text-wrap: balance",
+  "category": "Modern CSS",
+  "difficulty": "beginner",
+  "order": 40,
+  "description": "Automatically distributes words evenly across lines so no line is dramatically shorter than the rest. One line of CSS that replaces manual `<br>` tags in headings.",
+  "oldWay": "<!-- Hard-coding breaks — fragile at every other width -->\n<h2>Why the CSS cascade still<br>\nmatters in modern development</h2>",
+  "modernWay": "h2 {\n  text-wrap: balance;\n  /* Browser figures out the optimal line breaks */\n}",
+  "html": "<div class=\"card\">\n  <h2 class=\"heading\">Why Modern CSS Makes Responsive Design Feel Effortless</h2>\n  <p class=\"body\">Notice how the heading breaks change when text-wrap is applied.</p>\n</div>",
+  "startingCSS": ".card {\n  background: white;\n  padding: 1.5rem;\n  border-radius: 10px;\n  max-width: 280px;\n}\n\n.heading {\n  font-size: 1.375rem;\n  font-weight: 700;\n  line-height: 1.3;\n  margin: 0 0 0.75rem;\n  color: #1f2937;\n  /* Fix the uneven line breaks */\n}\n\n.body {\n  margin: 0;\n  font-size: 0.875rem;\n  color: #6b7280;\n  line-height: 1.5;\n}",
+  "challenge": "The heading has an awkward line break with a short word or two dangling at the end. Add a single property to distribute the text more evenly across lines.",
+  "targetSelector": ".heading",
+  "expectedCSS": {
+    "text-wrap": "balance"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "gap",
+  "title": "gap",
+  "category": "Flexbox / Grid",
+  "difficulty": "beginner",
+  "order": 90,
+  "description": "The gap property sets the spacing between flex or grid items. It applies to the container — not to the children — making it easy to space items evenly without margin hacks.",
+  "oldWay": ".item + .item {\n  margin-left: 1rem;\n}\n\n/* Or the even messier version: */\n.item {\n  margin-right: 1rem;\n}\n.item:last-child {\n  margin-right: 0;\n}",
+  "modernWay": ".container {\n  display: flex;\n  gap: 1rem;\n}",
+  "html": "<div class=\"container\">\n  <div class=\"item\">One</div>\n  <div class=\"item\">Two</div>\n  <div class=\"item\">Three</div>\n</div>",
+  "startingCSS": ".container {\n  display: flex;\n}\n\n.item {\n  background: #a855f7;\n  color: white;\n  padding: 1rem 1.5rem;\n  border-radius: 6px;\n  font-weight: 500;\n}",
+  "challenge": "Add spacing between the flex items. Use gap on the container — no margins on children.",
+  "targetSelector": ".container",
+  "expectedCSS": {
+    "gap": "1rem"
+  }
+}

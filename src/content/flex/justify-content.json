@@ -1,0 +1,17 @@
+{
+  "id": "justify-content",
+  "title": "justify-content",
+  "category": "Flexbox",
+  "difficulty": "beginner",
+  "order": 80,
+  "description": "Controls how flex items are distributed along the main axis. By default that's the horizontal axis. Use it to center, align, or spread items within a flex container.",
+  "oldWay": "/* Spread items using floats — a common nav pattern */\n.nav {\n  overflow: hidden;\n}\n.item {\n  float: left;\n}\n.item:last-child {\n  float: right;\n}",
+  "modernWay": ".container {\n  display: flex;\n  justify-content: space-between;\n}",
+  "html": "<nav class=\"container\">\n  <a class=\"item\" href=\"#\">Home</a>\n  <a class=\"item\" href=\"#\">About</a>\n  <a class=\"item\" href=\"#\">Contact</a>\n</nav>",
+  "startingCSS": ".container {\n  display: flex;\n  background: #1e2235;\n  padding: 0.75rem 1rem;\n  border-radius: 8px;\n}\n\n.item {\n  color: #e2e8f0;\n  text-decoration: none;\n  padding: 0.5rem 1rem;\n  border-radius: 4px;\n  font-weight: 500;\n  transition: background 0.15s;\n}\n\n.item:hover {\n  background: rgba(168, 85, 247, 0.2);\n}",
+  "challenge": "Spread the nav links so Home is on the left and Contact is on the right, with About in the middle.",
+  "targetSelector": ".container",
+  "expectedCSS": {
+    "justify-content": "space-between"
+  }
+}

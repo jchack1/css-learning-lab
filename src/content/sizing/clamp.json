@@ -1,0 +1,17 @@
+{
+  "id": "clamp",
+  "title": "clamp()",
+  "category": "Sizing",
+  "difficulty": "beginner",
+  "order": 50,
+  "description": "Sets a value that scales fluidly between a minimum and maximum. Write one line instead of multiple media query breakpoints. Works for font-size, width, padding — anything numeric.",
+  "oldWay": "h1 { font-size: 1.25rem; }\n\n@media (min-width: 480px) {\n  h1 { font-size: 1.5rem; }\n}\n\n@media (min-width: 768px) {\n  h1 { font-size: 2rem; }\n}\n\n@media (min-width: 1024px) {\n  h1 { font-size: 2.5rem; }\n}",
+  "modernWay": "h1 {\n  /* clamp(minimum, preferred, maximum) */\n  font-size: clamp(1.25rem, 5vw, 2.5rem);\n}",
+  "html": "<div class=\"card\">\n  <h1 class=\"headline\">Build Better Layouts With Less Code</h1>\n  <p class=\"body\">Resize the preview or change the font-size value to see clamp() in action.</p>\n</div>",
+  "startingCSS": ".card {\n  background: white;\n  padding: 2rem;\n  border-radius: 10px;\n}\n\n.headline {\n  margin: 0 0 0.75rem;\n  font-size: 2rem; /* Replace this with clamp() */\n  line-height: 1.2;\n  color: #1f2937;\n}\n\n.body {\n  margin: 0;\n  font-size: 1rem;\n  color: #6b7280;\n  line-height: 1.6;\n}",
+  "challenge": "Replace the fixed `font-size` on `.headline` with `clamp(1rem, 5vw, 2.5rem)` to make it scale fluidly — never smaller than 1rem, never larger than 2.5rem.",
+  "targetSelector": ".headline",
+  "expectedCSS": {
+    "font-size": "clamp(1rem, 5vw, 2.5rem)"
+  }
+}
