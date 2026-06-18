@@ -44,7 +44,7 @@
   font-size: 0.625rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  opacity: 0.7;
+  color: var(--color-text-faint);
 }
 
 .title {

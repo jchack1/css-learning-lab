@@ -115,7 +115,7 @@
 }
 
 .feedbackPass {
-  color: #4ade80;
+  color: var(--color-success);
 }
 
 .feedbackFail {
