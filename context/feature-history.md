@@ -82,6 +82,31 @@ Appears below the old way / modern CSS comparison only after the lesson is compl
 
 ---
 
+### 2026-06-17 — Accessibility and CSS colour system
+
+**Contrast fix: `--color-text-faint`** (`src/index.css`)
+Raised `--color-text-faint` from `#475569` (~2.3:1) to `#7a8ea5` (~5.2:1 on surface), clearing WCAG AA for all affected elements: the prev/next progress counter, completion status line, "Old Way"/"Modern CSS" comparison labels, "Other Solutions" heading, sidebar category headings, and the editor header label.
+
+**LessonNav category label** (`src/components/LessonNav/LessonNav.module.css`)
+Replaced `opacity: 0.7` on the inherited muted text with an explicit `color: var(--color-text-faint)`. The opacity approach silently reduced contrast below AA; the explicit colour is now accessible and visually equivalent.
+
+**Colour variables for difficulty / status colours** (`src/index.css`)
+Extracted three hardcoded hex values that appeared in multiple component files into named CSS custom properties:
+- `--color-success` / `-dim` / `-border` (`#4ade80` green)
+- `--color-warning` / `-dim` / `-border` (`#facc15` yellow)
+- `--color-error` / `-dim` / `-border` (`#fb7185` pink)
+
+All hardcoded instances in `PropertyInfo.module.css`, `Sidebar.module.css`, and `CodeEditor.module.css` replaced with the new variables.
+
+---
+
+### 2026-06-17 — Rainbow animation on "See other solutions"
+
+**`rainbowBorder` keyframe animation** (`src/components/PropertyInfo/PropertyInfo.module.css`)
+When a completed lesson has alternatives, the "See other solutions" button now animates its border through the full rainbow spectrum with a matching glow (`box-shadow`) on each frame — 3 passes at 1.2s each, then stops. No component changes required: the button only mounts after completion, so the animation always plays fresh on arrival. Lesson changes remount the component via `key={lesson.id}`, resetting the animation naturally.
+
+---
+
 ### 2026-06-17 — Code review fixes
 
 **Validator: value check scoped to declaration** (`src/engine/validator.ts`)
