@@ -70,6 +70,18 @@ A small status line below the lesson title reads `✓ Completed` (green) or `○
 
 ---
 
+### 2026-06-17 — Other solutions
+
+**`AlternativeSolution` type** (`src/types/lesson.ts`)
+New optional `alternatives` field on `Lesson`: an array of `{ name, description, css }` objects representing other modern approaches to the same challenge.
+
+**"See other solutions" button** (`src/components/PropertyInfo/`)
+Appears below the old way / modern CSS comparison only after the lesson is completed and only when `alternatives` is non-empty. Clicking toggles an alternatives panel showing each alternative's name, description, and CSS code block. State resets on lesson change via `key={lesson.id}`.
+
+**Alternatives are strictly modern approaches** — they must not duplicate what is already shown in `oldWay`. Guidance added to `docs/content-generation.md`.
+
+---
+
 ### 2026-06-17 — Code review fixes
 
 **Validator: value check scoped to declaration** (`src/engine/validator.ts`)

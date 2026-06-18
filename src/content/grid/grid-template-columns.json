@@ -13,5 +13,17 @@
   "targetSelector": ".container",
   "expectedCSS": {
     "grid-template-columns": "1fr 1fr 1fr"
-  }
+  },
+  "alternatives": [
+    {
+      "name": "repeat() shorthand",
+      "description": "Use repeat() when all columns share the same size. Easier to change the column count in one place, and cleaner when you have many columns.",
+      "css": ".container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 1rem;\n}"
+    },
+    {
+      "name": "Auto-responsive columns",
+      "description": "Let the browser decide how many columns fit using auto-fill and minmax(). The grid reflows automatically as the container grows or shrinks — no media queries needed.",
+      "css": ".container {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));\n  gap: 1rem;\n}"
+    }
+  ]
 }

@@ -13,5 +13,12 @@
   "targetSelector": ".container",
   "expectedCSS": {
     "justify-content": "space-between"
-  }
+  },
+  "alternatives": [
+    {
+      "name": "Auto margin push",
+      "description": "Add margin-inline-start: auto to a single item to push it to the far end. More precise than space-between when only one item needs to be separated from the rest.",
+      "css": ".container {\n  display: flex;\n}\n\n.item:last-child {\n  margin-inline-start: auto;\n}"
+    }
+  ]
 }

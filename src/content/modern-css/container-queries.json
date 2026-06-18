@@ -13,5 +13,12 @@
   "targetSelector": ".wrapper",
   "expectedCSS": {
     "container-type": "inline-size"
-  }
+  },
+  "alternatives": [
+    {
+      "name": "container-type: size",
+      "description": "Use size when a component also needs to respond to its container's height. inline-size is the right default — size is for components placed inside fixed-height containers where vertical space also constrains the layout.",
+      "css": ".wrapper {\n  container-type: size;\n}\n\n@container (min-width: 300px) {\n  .card { flex-direction: row; }\n}"
+    }
+  ]
 }

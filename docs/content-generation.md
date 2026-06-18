@@ -189,6 +189,45 @@ This contrast makes the modern approach feel meaningful, not trivial. Do not cri
 
 ---
 
+## Alternative solutions
+
+Some lessons can include an `alternatives` array showing other modern approaches to the same problem.
+
+```json
+"alternatives": [
+  {
+    "name": "Grid layout",
+    "description": "Useful when you already have a grid container — place-items: center is more concise.",
+    "css": ".container {\n  display: grid;\n  place-items: center;\n}"
+  }
+]
+```
+
+Alternatives are hidden until the user completes the lesson, then revealed via a "See other solutions" button. The goal is to teach that CSS often has multiple valid approaches and that the primary solution is chosen intentionally.
+
+### When to include alternatives
+
+- Multiple genuinely modern approaches exist for the same task (e.g. flexbox vs. grid for centering)
+- Each approach has a meaningful use case or tradeoff worth explaining
+
+### When NOT to include alternatives
+
+- The only alternative is the old way — that is already shown in `oldWay`, do not repeat it here
+- The alternative is technically possible but poor practice
+- There is no meaningful tradeoff to explain
+
+### Good example
+
+Primary: `gap` on a flex container  
+Alternative: `gap` on a grid container with a note about context
+
+### Avoid
+
+Primary: `gap`  
+Alternative: individual margins — this belongs in `oldWay`, not here
+
+---
+
 ## Quality checklist
 
 Before committing a lesson:
@@ -200,7 +239,8 @@ Before committing a lesson:
 - [ ] The explanation is concise — two sentences max
 - [ ] The user must type CSS to solve it (nothing is pre-solved)
 - [ ] The `targetSelector` and `expectedCSS` match what the validator should check
-- [ ] The lesson fits the existing JSON structure with no new fields
+- [ ] The lesson fits the existing JSON structure
+- [ ] If `alternatives` are included, they are modern approaches distinct from `oldWay`
 
 ---
 

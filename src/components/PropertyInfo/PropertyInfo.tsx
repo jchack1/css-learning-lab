@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Lesson } from '../../types/lesson';
 import styles from './PropertyInfo.module.css';
 
@@ -7,6 +8,9 @@ interface PropertyInfoProps {
 }
 
 export function PropertyInfo({ lesson, isCompleted }: PropertyInfoProps) {
+  const [showAlternatives, setShowAlternatives] = useState(false);
+  const hasAlternatives = isCompleted && (lesson.alternatives?.length ?? 0) > 0;
+
   return (
     <div className={styles.info}>
       <div className={styles.header}>
@@ -40,6 +44,28 @@ export function PropertyInfo({ lesson, isCompleted }: PropertyInfoProps) {
           <pre className={styles.code}><code>{lesson.modernWay}</code></pre>
         </div>
       </div>
+
+      {hasAlternatives && (
+        <button
+          className={styles.seeOtherBtn}
+          onClick={() => setShowAlternatives(v => !v)}
+        >
+          {showAlternatives ? '▴' : '▾'} See other solutions
+        </button>
+      )}
+
+      {hasAlternatives && showAlternatives && (
+        <div className={styles.alternatives}>
+          <p className={styles.alternativesHeading}>Other solutions</p>
+          {lesson.alternatives!.map((alt, i) => (
+            <div key={i} className={styles.alternative}>
+              <p className={styles.alternativeName}>{alt.name}</p>
+              <p className={styles.alternativeDescription}>{alt.description}</p>
+              <pre className={styles.code}><code>{alt.css}</code></pre>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

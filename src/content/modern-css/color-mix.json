@@ -13,5 +13,12 @@
   "targetSelector": ".tint",
   "expectedCSS": {
     "background": "color-mix"
-  }
+  },
+  "alternatives": [
+    {
+      "name": "Mix in the oklch color space",
+      "description": "oklch produces more perceptually uniform transitions. Mixing in srgb can produce muddy grey midpoints — oklch keeps colors vibrant and natural-looking across the range.",
+      "css": ".tint  { background: color-mix(in oklch, #a855f7 50%, white); }\n.shade { background: color-mix(in oklch, #a855f7 70%, black); }"
+    }
+  ]
 }

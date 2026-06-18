@@ -69,7 +69,7 @@ export function LessonPanel({
       </div>
 
       <div className={styles.scroll}>
-        <PropertyInfo lesson={lesson} isCompleted={isCompleted} />
+        <PropertyInfo key={lesson.id} lesson={lesson} isCompleted={isCompleted} />
         <CodeEditor
           css={userCSS}
           onChange={handleCSSChange}

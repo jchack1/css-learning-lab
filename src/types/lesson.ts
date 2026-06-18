@@ -1,3 +1,9 @@
+export interface AlternativeSolution {
+  name: string;
+  description: string;
+  css: string;
+}
+
 export interface Lesson {
   id: string;
   title: string;
@@ -12,4 +18,5 @@ export interface Lesson {
   targetSelector?: string;
   expectedCSS: Record<string, string>;
   order?: number;
+  alternatives?: AlternativeSolution[];
 }
