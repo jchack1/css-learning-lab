@@ -1,0 +1,25 @@
+{
+  "id": "text-underline-offset",
+  "title": "text-underline-offset",
+  "category": "Modern CSS",
+  "difficulty": "beginner",
+  "order": 230,
+  "description": "Controls the gap between text and its underline. Pair it with text-decoration-thickness for full typographic control over underlines — no border-bottom hacks needed. Baseline widely available since 2022.",
+  "oldWay": "/* Fake underline using border-bottom */\na {\n  text-decoration: none;\n  border-bottom: 2px solid currentColor;\n  padding-bottom: 3px; /* manually adjust gap */\n}\n/* Breaks on multi-line text, doesn't respect descenders */",
+  "modernWay": "a {\n  text-underline-offset: 4px;\n  text-decoration-thickness: 2px;\n}",
+  "html": "<div class=\"container\">\n  <p>Default underline: <a class=\"link default-link\" href=\"#\">hover over this link</a> sits right against the text.</p>\n  <p>After styling: <a class=\"link styled-link\" href=\"#\">hover over this link</a> has proper breathing room.</p>\n  <p class=\"sample\">A longer sentence with a <a class=\"link\" href=\"#\">styled inline link</a> to see how it sits in running text across the baseline.</p>\n</div>",
+  "startingCSS": ".container {\n  padding: 1.5rem;\n  background: #1e293b;\n  border-radius: 10px;\n  color: #e2e8f0;\n  font-size: 0.95rem;\n  line-height: 1.8;\n}\n\n.container p {\n  margin: 0 0 0.75rem;\n}\n\n.sample { margin-bottom: 0 !important; }\n\n.link {\n  color: #a855f7;\n  /* Add text-underline-offset and text-decoration-thickness here */\n}\n\n.styled-link {\n  text-underline-offset: 4px;\n  text-decoration-thickness: 2px;\n}",
+  "challenge": "The default link underline is cramped. Add text-underline-offset: 4px to .link so all links get proper spacing between text and underline.",
+  "targetSelector": ".link",
+  "expectedCSS": {
+    "text-underline-offset": "4px"
+  },
+  "alternatives": [
+    {
+      "name": "Animated underline on hover",
+      "description": "Combine text-decoration-thickness with a transition to animate the underline growing in on hover — a clean interaction that previously required pseudo-element width hacks.",
+      "css": ".link {\n  text-decoration-thickness: 1px;\n  text-underline-offset: 3px;\n  transition: text-decoration-thickness 0.2s;\n}\n.link:hover {\n  text-decoration-thickness: 3px;\n}"
+    }
+  ],
+  "realWorldUsage": "Body copy links in editorial sites and documentation, navigation underlines as a design element, and any context where the default browser underline looks too close to the descenders. Also pairs well with text-decoration-color to match brand colors."
+}

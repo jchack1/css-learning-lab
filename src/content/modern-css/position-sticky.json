@@ -1,0 +1,19 @@
+{
+  "id": "position-sticky",
+  "title": "position: sticky",
+  "category": "Modern CSS",
+  "difficulty": "intermediate",
+  "order": 180,
+  "description": "An element with position: sticky scrolls normally until it reaches an offset threshold — defined by top, left, bottom, or right — then sticks in place until its container scrolls away.",
+  "oldWay": "/* Required a JavaScript scroll listener */\nwindow.addEventListener('scroll', () => {\n  const nav = document.querySelector('.nav');\n  if (window.scrollY > 0) {\n    nav.classList.add('is-stuck');\n  } else {\n    nav.classList.remove('is-stuck');\n  }\n});\n/* .is-stuck { position: fixed; top: 0; } */",
+  "modernWay": ".nav {\n  position: sticky;\n  top: 0;\n}",
+  "html": "<div class=\"scroll-container\">\n  <nav class=\"sticky-nav\">Sticky Navigation</nav>\n  <div class=\"content\">\n    <p>Scroll down inside this box — the nav stays pinned to the top.</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>\n    <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>\n    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>\n    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n    <p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis molestie dictum semper.</p>\n  </div>\n</div>",
+  "startingCSS": ".scroll-container {\n  height: 260px;\n  overflow-y: auto;\n  background: #0f172a;\n  border-radius: 10px;\n  border: 1px solid #334155;\n}\n\n.sticky-nav {\n  background: #7c3aed;\n  color: white;\n  padding: 0.75rem 1rem;\n  font-weight: 600;\n  font-size: 0.9rem;\n  /* Make this stick to the top while scrolling */\n}\n\n.content {\n  padding: 1rem;\n  color: #94a3b8;\n  font-size: 0.875rem;\n  line-height: 1.7;\n}\n\n.content p {\n  margin: 0 0 0.75rem;\n}",
+  "challenge": "Scroll the preview — the nav disappears. Make it stick to the top of the scrollable container as the content scrolls beneath it. You'll need both position and top.",
+  "targetSelector": ".sticky-nav",
+  "expectedCSS": {
+    "position": "sticky",
+    "top": "0"
+  },
+  "realWorldUsage": "Sticky table headers in data-heavy dashboards, section navigation that stays visible as users scroll through long articles, and in-panel toolbars that should remain accessible while the panel content scrolls — any UI where a key element should stay visible without pulling it out of the document flow."
+}

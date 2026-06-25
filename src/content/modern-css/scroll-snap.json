@@ -1,0 +1,25 @@
+{
+  "id": "scroll-snap",
+  "title": "scroll-snap",
+  "category": "Modern CSS",
+  "difficulty": "intermediate",
+  "order": 190,
+  "description": "scroll-snap-type on a container and scroll-snap-align on children create CSS-only snap scrolling. Cards click into place as you scroll — no JavaScript needed.",
+  "oldWay": "/* JavaScript scroll listener calculating snap positions */\ncontainer.addEventListener('scroll', () => {\n  const cardWidth = card.offsetWidth + gap;\n  const nearest = Math.round(container.scrollLeft / cardWidth);\n  container.scrollTo({\n    left: nearest * cardWidth,\n    behavior: 'smooth'\n  });\n});",
+  "modernWay": ".container {\n  scroll-snap-type: x mandatory;\n  overflow-x: auto;\n}\n.card {\n  scroll-snap-align: start;\n}",
+  "html": "<div class=\"container\">\n  <div class=\"card\" style=\"background:#7c3aed\">1</div>\n  <div class=\"card\" style=\"background:#a855f7\">2</div>\n  <div class=\"card\" style=\"background:#9333ea\">3</div>\n  <div class=\"card\" style=\"background:#6d28d9\">4</div>\n  <div class=\"card\" style=\"background:#8b5cf6\">5</div>\n</div>",
+  "startingCSS": ".container {\n  scroll-snap-type: x mandatory;\n  overflow-x: auto;\n  display: flex;\n  gap: 1rem;\n  padding: 1rem;\n  background: #1e293b;\n  border-radius: 10px;\n  /* scroll-snap-type is already set above */\n  /* Cards also need a snap point — add scroll-snap-align to .card */\n}\n\n.card {\n  flex-shrink: 0;\n  width: 200px;\n  height: 180px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 2rem;\n  font-weight: 700;\n  color: white;\n  /* Add scroll-snap-align here */\n}",
+  "challenge": "The container already has scroll-snap-type set, but scrolling still drifts freely. Each card needs to declare where it snaps. Add scroll-snap-align: start to .card.",
+  "targetSelector": ".card",
+  "expectedCSS": {
+    "scroll-snap-align": "start"
+  },
+  "alternatives": [
+    {
+      "name": "scroll-snap-align: center",
+      "description": "center snaps the card's midpoint to the container's midpoint. Use this when you want the active card centered in view rather than aligned to the left edge.",
+      "css": ".card {\n  scroll-snap-align: center;\n}"
+    }
+  ],
+  "realWorldUsage": "Mobile-style card carousels, onboarding step sequences, and image galleries — any horizontally scrolling list where each item should click cleanly into view. Also used vertically on full-page scroll sites where sections snap to the viewport."
+}

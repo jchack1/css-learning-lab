@@ -1,0 +1,25 @@
+{
+  "id": "margin-inline",
+  "title": "margin-inline",
+  "category": "Modern CSS",
+  "difficulty": "beginner",
+  "order": 155,
+  "description": "Sets margins on the inline axis — left and right in horizontal writing modes. margin-inline: auto is the modern, direction-aware way to center a block element horizontally.",
+  "oldWay": ".container {\n  margin-left: auto;\n  margin-right: auto;\n}",
+  "modernWay": ".container {\n  margin-inline: auto;\n}",
+  "html": "<div class=\"wrapper\">\n  <div class=\"card\">\n    <strong>Centered block</strong>\n    <p>Uses a single logical property instead of two physical ones.</p>\n  </div>\n</div>",
+  "startingCSS": ".wrapper {\n  background: #0f172a;\n  padding: 2rem;\n}\n\n.card {\n  max-width: 380px;\n  background: #1e293b;\n  border: 1px solid #334155;\n  border-radius: 10px;\n  padding: 1.5rem;\n  color: #e2e8f0;\n  /* Center this card horizontally */\n}\n\n.card strong {\n  display: block;\n  font-size: 1rem;\n  margin-bottom: 0.5rem;\n}\n\n.card p {\n  margin: 0;\n  color: #94a3b8;\n  font-size: 0.875rem;\n  line-height: 1.5;\n}",
+  "challenge": "Center the card horizontally using a single logical property — without using margin: auto or individual margin-left / margin-right.",
+  "targetSelector": ".card",
+  "expectedCSS": {
+    "margin-inline": "auto"
+  },
+  "alternatives": [
+    {
+      "name": "padding-block for vertical spacing",
+      "description": "The block axis is the vertical axis in horizontal writing modes. padding-block: 1rem sets top and bottom padding in one declaration — a common pattern for section padding that should adapt to writing direction.",
+      "css": ".section {\n  padding-block: 3rem; /* top and bottom */\n  padding-inline: 1.5rem; /* left and right */\n}"
+    }
+  ],
+  "realWorldUsage": "Logical properties pay off in projects that support multiple writing directions — margin-inline: auto centers correctly in both LTR and RTL layouts. They're also increasingly used in design systems as a direction-neutral convention, even for single-language sites."
+}

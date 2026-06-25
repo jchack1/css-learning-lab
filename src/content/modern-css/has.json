@@ -13,5 +13,6 @@
   "targetSelector": ".item:has(input:checked)",
   "expectedCSS": {
     "background": "#f3e8ff"
-  }
+  },
+  "realWorldUsage": "Frequently used for form validation UI: style a field's wrapper or label when the input inside has :invalid, without adding a class via JavaScript — .field:has(input:invalid) { border-color: red; }. Also used to style a nav component when a dropdown inside it is open, or to apply a different layout to a card that contains an image versus one that is text-only."
 }

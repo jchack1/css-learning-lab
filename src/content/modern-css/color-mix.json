@@ -20,5 +20,6 @@
       "description": "oklch produces more perceptually uniform transitions. Mixing in srgb can produce muddy grey midpoints — oklch keeps colors vibrant and natural-looking across the range.",
       "css": ".tint  { background: color-mix(in oklch, #a855f7 50%, white); }\n.shade { background: color-mix(in oklch, #a855f7 70%, black); }"
     }
-  ]
+  ],
+  "realWorldUsage": "The most practical production use is palette generation from a single CSS custom property. Define --brand once, then derive every tint, shade, and alpha variant from it: color-mix(in oklch, var(--brand), black 15%) for hover states, color-mix(in oklch, var(--brand), transparent 80%) for subtle backgrounds. Change the one source variable and every derived color updates automatically — no preprocessor required."
 }

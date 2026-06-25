@@ -1,0 +1,25 @@
+{
+  "id": "oklch",
+  "title": "oklch()",
+  "category": "Modern CSS",
+  "difficulty": "intermediate",
+  "order": 200,
+  "description": "Defines colors in the OKLab perceptual color space using Lightness, Chroma, and Hue. Unlike hex or hsl(), rotating the hue produces colors of equal perceived brightness — no manual brightness tuning required. Baseline newly available since 2023.",
+  "oldWay": "/* Hex requires manual tuning to match perceived brightness */\n.red   { color: #ef4444; } /* lightness ~53% */\n.green { color: #22c55e; } /* lightness ~47% — already noticeably different */\n.blue  { color: #3b82f6; } /* lightness ~60% — brighter again */\n/* Consistent tonal palettes require trial-and-error or a tool */",
+  "modernWay": "/* Change only H — L and C stay the same */\n.red   { color: oklch(65% 0.22 30); }\n.green { color: oklch(65% 0.22 145); }\n.blue  { color: oklch(65% 0.22 260); }",
+  "html": "<div class=\"palette\">\n  <div class=\"swatch s1\"><span>30°</span><small>oklch(65% 0.2 30)</small></div>\n  <div class=\"swatch s2\"><span>145°</span><small>your answer here</small></div>\n  <div class=\"swatch s3\"><span>260°</span><small>oklch(65% 0.2 260)</small></div>\n</div>\n<p class=\"note\">All three share the same lightness (65%) and chroma (0.2) — only hue differs</p>",
+  "startingCSS": ".palette {\n  display: flex;\n  gap: 1rem;\n  justify-content: center;\n  padding: 2rem 1.5rem 1.5rem;\n  background: #0f172a;\n  border-radius: 12px;\n}\n\n.swatch {\n  width: 110px;\n  height: 110px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  color: white;\n  font-weight: 700;\n  gap: 0.25rem;\n}\n\n.swatch span { font-size: 1.1rem; }\n\n.swatch small {\n  font-size: 0.6rem;\n  opacity: 0.8;\n  text-align: center;\n  padding: 0 0.25rem;\n  font-weight: 400;\n  line-height: 1.3;\n}\n\n.s1 { background: oklch(65% 0.2 30); }\n\n.s2 {\n  background: #475569;\n  /* Replace with oklch(65% 0.2 145) */\n}\n\n.s3 { background: oklch(65% 0.2 260); }\n\n.note {\n  text-align: center;\n  color: #64748b;\n  font-size: 0.75rem;\n  margin: 0.75rem 0 0;\n  font-style: italic;\n}",
+  "challenge": "The first (orange) and third (blue) swatches already use oklch() with identical lightness and chroma. The middle swatch is a gray placeholder. Set its background to oklch(65% 0.2 145) to complete the perceptually even palette with a green.",
+  "targetSelector": ".s2",
+  "expectedCSS": {
+    "background": "oklch(65% 0.2 145)"
+  },
+  "alternatives": [
+    {
+      "name": "oklch() with an alpha channel",
+      "description": "A fourth argument adds transparency. oklch(65% 0.2 260 / 0.5) is a 50% transparent blue — more predictable than rgba() because the lightness is perceptually uniform even at partial opacity.",
+      "css": ".overlay {\n  background: oklch(65% 0.2 260 / 0.5);\n}"
+    }
+  ],
+  "realWorldUsage": "Generating color palettes and scales in design tokens — oklch() lets you define a consistent tonal palette by stepping the hue value, confident each step will look equally bright. It's increasingly used in design systems replacing HSL, which has well-known perceived-brightness inconsistencies across hues."
+}

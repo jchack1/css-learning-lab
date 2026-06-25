@@ -1,0 +1,18 @@
+{
+  "id": "css-custom-properties",
+  "title": "Custom Properties",
+  "category": "Modern CSS",
+  "difficulty": "beginner",
+  "order": 140,
+  "description": "CSS custom properties (variables) store a value under a name prefixed with --. Any property can reference it with var(). Changing the variable updates every use automatically.",
+  "oldWay": "/* Same value copy-pasted everywhere */\n.button { background: #a855f7; }\n.badge  { background: #a855f7; border-color: #a855f7; }\n.link   { color: #a855f7; }\n/* To rebrand: grep-and-replace across the entire stylesheet */",
+  "modernWay": ":root {\n  --brand: #a855f7;\n}\n\n.button { background: var(--brand); }\n.badge  { background: var(--brand); }\n.link   { color: var(--brand); }",
+  "html": "<div class=\"container\">\n  <button class=\"button\">Buy Now</button>\n  <span class=\"badge\">New</span>\n</div>",
+  "startingCSS": ".container {\n  display: flex;\n  gap: 1rem;\n  align-items: center;\n  padding: 1.5rem;\n  background: #1e293b;\n  border-radius: 10px;\n  /* Define --brand-color here */\n}\n\n.button {\n  background: var(--brand-color, #475569);\n  color: white;\n  border: none;\n  padding: 0.625rem 1.25rem;\n  border-radius: 6px;\n  font-weight: 600;\n  font-size: 0.9rem;\n  cursor: pointer;\n}\n\n.badge {\n  background: var(--brand-color, #475569);\n  color: white;\n  padding: 0.2rem 0.6rem;\n  border-radius: 999px;\n  font-size: 0.75rem;\n  font-weight: 600;\n}",
+  "challenge": "Both elements use var(--brand-color) but the variable isn't defined — they fall back to gray. Define --brand-color on .container and set it to #a855f7.",
+  "targetSelector": ".container",
+  "expectedCSS": {
+    "--brand-color": "#a855f7"
+  },
+  "realWorldUsage": "Design systems define a set of custom properties on :root for brand colors, spacing, and border-radius. Every component references these shared values. Theming — dark mode, white-label variants — is then a matter of swapping variables, not rewriting component CSS."
+}

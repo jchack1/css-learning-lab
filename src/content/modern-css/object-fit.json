@@ -1,0 +1,25 @@
+{
+  "id": "object-fit",
+  "title": "object-fit",
+  "category": "Modern CSS",
+  "difficulty": "beginner",
+  "order": 160,
+  "description": "Controls how an img or video fills its container. object-fit: cover scales the image to fill the box completely, cropping the overflow while preserving the original aspect ratio.",
+  "oldWay": "/* The overflow-hidden wrapper trick */\n.image-wrapper {\n  width: 160px;\n  height: 160px;\n  overflow: hidden;\n  position: relative;\n}\n.image-wrapper img {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 100%;\n  height: auto;\n}",
+  "modernWay": "img {\n  width: 160px;\n  height: 160px;\n  object-fit: cover;\n}",
+  "html": "<div class=\"gallery\">\n  <img class=\"photo\" src=\"https://picsum.photos/seed/mountain/400/600\" alt=\"Portrait image\" />\n  <img class=\"photo\" src=\"https://picsum.photos/seed/city/600/300\" alt=\"Landscape image\" />\n  <img class=\"photo\" src=\"https://picsum.photos/seed/forest/400/400\" alt=\"Square image\" />\n</div>",
+  "startingCSS": ".gallery {\n  display: flex;\n  gap: 0.75rem;\n  padding: 1rem;\n  background: #1e293b;\n  border-radius: 10px;\n}\n\n.photo {\n  width: 160px;\n  height: 160px;\n  border-radius: 8px;\n  display: block;\n  /* Images are distorted — fix with object-fit */\n}",
+  "challenge": "The images are stretched and squashed to fit the square boxes. Make them fill their containers while keeping their natural proportions — some cropping is expected.",
+  "targetSelector": ".photo",
+  "expectedCSS": {
+    "object-fit": "cover"
+  },
+  "alternatives": [
+    {
+      "name": "object-fit: contain",
+      "description": "contain scales the image to fit entirely inside the box — no cropping. The full image is always visible but may leave empty space (letterboxing). Use for logos, diagrams, or any image where cropping would hide important content.",
+      "css": ".photo {\n  width: 160px;\n  height: 160px;\n  object-fit: contain;\n  background: #0f172a; /* makes the letterbox area visible */\n}"
+    }
+  ],
+  "realWorldUsage": "Standard for product image grids, team photo cards, and article thumbnails — any time images come from a CMS or user uploads with inconsistent dimensions. object-fit: cover keeps the grid visually consistent without requiring images to be pre-cropped to a specific ratio."
+}

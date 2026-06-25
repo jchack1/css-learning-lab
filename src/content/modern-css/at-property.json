@@ -1,0 +1,17 @@
+{
+  "id": "at-property",
+  "title": "@property",
+  "category": "Modern CSS",
+  "difficulty": "advanced",
+  "order": 215,
+  "description": "Declares a typed CSS custom property — giving it a syntax, an initial value, and inheritance behavior. The browser can now interpolate it, which means custom properties can be used in transitions and animations. Baseline newly available since 2024.",
+  "oldWay": "/* Custom properties can't be transitioned —\n   the browser treats them as opaque strings */\n.box {\n  --hue: 30;\n  background: oklch(65% 0.22 var(--hue));\n  transition: --hue 0.4s; /* has no effect */\n}\n.box:hover {\n  --hue: 260; /* jumps instantly */\n}",
+  "modernWay": "@property --hue {\n  syntax: '<number>';\n  initial-value: 30;\n  inherits: false;\n}\n\n.box {\n  background: oklch(65% 0.22 var(--hue));\n  transition: --hue 0.4s;\n}\n.box:hover {\n  --hue: 260; /* now animates smoothly */\n}",
+  "html": "<div class=\"demo\">\n  <div class=\"box untyped\">Hover me<br><small>No @property</small></div>\n  <div class=\"box typed\">Hover me<br><small>Needs @property</small></div>\n</div>",
+  "startingCSS": ".demo {\n  display: flex;\n  gap: 1.5rem;\n  padding: 1.5rem;\n  background: #0f172a;\n  border-radius: 12px;\n}\n\n.box {\n  flex: 1;\n  height: 140px;\n  border-radius: 10px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  color: white;\n  font-weight: 600;\n  font-size: 0.9rem;\n  text-align: center;\n  gap: 0.4rem;\n  cursor: pointer;\n}\n\n.box small {\n  font-size: 0.7rem;\n  opacity: 0.75;\n  font-weight: 400;\n}\n\n/* Untyped — transition has no effect, color jumps on hover */\n.untyped {\n  --hue: 30;\n  background: oklch(65% 0.22 var(--hue));\n  transition: --hue 0.5s ease;\n}\n.untyped:hover { --hue: 260; }\n\n/* Typed — needs @property to enable the transition */\n.typed {\n  --typed-hue: 30;\n  background: oklch(65% 0.22 var(--typed-hue));\n  transition: --typed-hue 0.5s ease;\n}\n.typed:hover { --typed-hue: 260; }\n\n/* Add @property --typed-hue here */",
+  "challenge": "Hover both boxes — the left one jumps instantly while the right should glide smoothly. The browser can't animate --typed-hue without knowing its type. Add an @property rule for --typed-hue with syntax: '<number>' and initial-value: 30.",
+  "expectedCSS": {
+    "syntax": "'<number>'"
+  },
+  "realWorldUsage": "Smooth background-color transitions driven by a hue or lightness variable, animated gradient positions, and custom progress indicators — any animation where the interpolated value lives in a custom property rather than a regular CSS property. @property is also used to define design token types in CSS-native design systems."
+}

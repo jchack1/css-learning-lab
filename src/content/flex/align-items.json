@@ -1,0 +1,30 @@
+{
+  "id": "align-items",
+  "title": "align-items",
+  "category": "Flexbox",
+  "difficulty": "beginner",
+  "order": 100,
+  "description": "Controls how flex items are aligned along the cross axis. For a horizontal (row) flex container, that is vertical alignment — center, stretch, start, or end.",
+  "oldWay": "/* Vertical centering in the float era */\n.container {\n  display: table-cell;\n  vertical-align: middle;\n  height: 200px;\n}\n\n/* Or the magic number approach */\n.item {\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}",
+  "modernWay": ".container {\n  display: flex;\n  align-items: center;\n}",
+  "html": "<div class=\"container\">\n  <div class=\"item\">Short</div>\n  <div class=\"item tall\">Tall<br>Content<br>Here</div>\n  <div class=\"item\">Short</div>\n</div>",
+  "startingCSS": ".container {\n  display: flex;\n  height: 160px;\n  background: #1e293b;\n  border-radius: 10px;\n  padding: 1rem;\n  gap: 1rem;\n  border: 1px solid #334155;\n}\n\n.item {\n  background: #a855f7;\n  color: white;\n  padding: 0.75rem 1.25rem;\n  border-radius: 6px;\n  font-weight: 500;\n  font-size: 0.9rem;\n}\n\n.tall {\n  background: #7c3aed;\n  line-height: 1.6;\n}",
+  "challenge": "The items are pinned to the top of the container. Vertically center all three items without touching their individual styles.",
+  "targetSelector": ".container",
+  "expectedCSS": {
+    "align-items": "center"
+  },
+  "alternatives": [
+    {
+      "name": "align-items: stretch (default)",
+      "description": "The default value stretches all items to fill the container's cross-axis height. Useful for equal-height columns — each item grows to match the tallest sibling automatically.",
+      "css": ".container {\n  display: flex;\n  align-items: stretch; /* default — items fill the full height */\n}"
+    },
+    {
+      "name": "align-self on individual items",
+      "description": "align-self overrides align-items for a single item. Most items can stretch while one specific item is centered — useful when a badge or icon needs different treatment than its siblings.",
+      "css": ".container {\n  display: flex;\n  align-items: stretch;\n}\n\n.special {\n  align-self: center;\n}"
+    }
+  ],
+  "realWorldUsage": "Used constantly in navbars — a logo, nav links, and a CTA button all in a flex row need to sit on the same vertical midline regardless of their individual heights. Also the default approach for card rows where text and an icon sit side by side."
+}

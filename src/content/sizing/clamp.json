@@ -13,5 +13,6 @@
   "targetSelector": ".headline",
   "expectedCSS": {
     "font-size": "clamp(1rem, 5vw, 2.5rem)"
-  }
+  },
+  "realWorldUsage": "Widely used to build a fluid type scale: define every heading size with clamp() once, and font sizes scale smoothly across the full range from mobile to desktop with no media queries. Also common for responsive padding and max-width values that need to adapt gradually rather than jumping at fixed breakpoints."
 }

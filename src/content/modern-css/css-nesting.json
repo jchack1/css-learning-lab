@@ -1,0 +1,25 @@
+{
+  "id": "css-nesting",
+  "title": "CSS Nesting",
+  "category": "Modern CSS",
+  "difficulty": "intermediate",
+  "order": 210,
+  "description": "Native CSS nesting lets you write child selectors, pseudo-classes, and media queries inside a parent rule using &. The & represents the parent selector — no preprocessor needed. Baseline newly available since 2023.",
+  "oldWay": "/* Sass/Less required for nesting */\n/* In vanilla CSS, every rule had to be written flat */\n.card { background: #1e293b; }\n.card:hover { border-color: #a855f7; }\n.card .title { font-weight: 600; }\n.card .body { color: #94a3b8; }",
+  "modernWay": ".card {\n  background: #1e293b;\n\n  &:hover {\n    border-color: #a855f7;\n  }\n\n  & .title {\n    font-weight: 600;\n  }\n\n  & .body {\n    color: #94a3b8;\n  }\n}",
+  "html": "<div class=\"grid\">\n  <div class=\"card\">\n    <div class=\"title\">Card One</div>\n    <div class=\"body\">Hover to see the border change.</div>\n  </div>\n  <div class=\"card\">\n    <div class=\"title\">Card Two</div>\n    <div class=\"body\">The hover state is nested inside .card.</div>\n  </div>\n  <div class=\"card\">\n    <div class=\"title\">Card Three</div>\n    <div class=\"body\">No separate selector block needed.</div>\n  </div>\n</div>",
+  "startingCSS": ".grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 0.75rem;\n}\n\n.card {\n  background: #1e293b;\n  border: 2px solid #334155;\n  border-radius: 10px;\n  padding: 1.25rem;\n  cursor: pointer;\n  transition: border-color 0.2s;\n\n  /* Add a hover state using & nesting */\n  /* &:hover { border-color: #a855f7; } */\n\n  & .title {\n    font-weight: 600;\n    color: #e2e8f0;\n    margin-bottom: 0.4rem;\n    font-size: 0.9rem;\n  }\n\n  & .body {\n    color: #64748b;\n    font-size: 0.8rem;\n    line-height: 1.5;\n  }\n}",
+  "challenge": "The cards have a hover transition set up but no hover state defined yet. Inside the .card rule, write &:hover { border-color: #a855f7; } to highlight the border on hover — without leaving the .card block.",
+  "targetSelector": ".card",
+  "expectedCSS": {
+    "border-color": "#a855f7"
+  },
+  "alternatives": [
+    {
+      "name": "Nesting media queries",
+      "description": "You can also nest @media queries inside a rule — a major Sass pattern that is now native CSS. The styles apply to .card only when both conditions are met.",
+      "css": ".card {\n  padding: 1.25rem;\n\n  @media (min-width: 600px) {\n    padding: 2rem;\n  }\n}"
+    }
+  ],
+  "realWorldUsage": "Component-scoped CSS — keeping a card's base styles, hover state, child element styles, and breakpoint overrides all in one block. Previously required Sass or a CSS-in-JS library. Now standard in vanilla CSS files and CSS Modules."
+}

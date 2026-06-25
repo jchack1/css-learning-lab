@@ -1,0 +1,25 @@
+{
+  "id": "inset",
+  "title": "inset",
+  "category": "Modern CSS",
+  "difficulty": "beginner",
+  "order": 240,
+  "description": "Shorthand for top, right, bottom, and left on a positioned element — the same syntax as margin and padding. inset: 0 fills the parent completely in one declaration. Baseline widely available since 2021.",
+  "oldWay": ".overlay {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n}",
+  "modernWay": ".overlay {\n  position: absolute;\n  inset: 0;\n}",
+  "html": "<div class=\"card\">\n  <img class=\"photo\" src=\"https://picsum.photos/seed/landscape/400/240\" alt=\"\" />\n  <div class=\"overlay\">\n    <strong>Image title</strong>\n    <p>This overlay fills the card completely using inset: 0</p>\n  </div>\n</div>",
+  "startingCSS": ".card {\n  position: relative;\n  width: 320px;\n  border-radius: 10px;\n  overflow: hidden;\n}\n\n.photo {\n  width: 100%;\n  height: 180px;\n  object-fit: cover;\n  display: block;\n}\n\n.overlay {\n  position: absolute;\n  /* Replace these four lines with inset: 0 */\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  padding: 1rem;\n  color: white;\n}\n\n.overlay strong {\n  display: block;\n  font-size: 0.95rem;\n  margin-bottom: 0.2rem;\n}\n\n.overlay p {\n  margin: 0;\n  font-size: 0.75rem;\n  opacity: 0.85;\n}",
+  "challenge": "The overlay currently uses four separate position properties. Replace top, right, bottom, and left with a single inset: 0 declaration.",
+  "targetSelector": ".overlay",
+  "expectedCSS": {
+    "inset": "0"
+  },
+  "alternatives": [
+    {
+      "name": "Partial inset values",
+      "description": "Like margin and padding, inset accepts 1–4 values. inset: 1rem 0 sets 1rem top and bottom, 0 left and right — useful for an overlay that has breathing room at the edges.",
+      "css": ".overlay {\n  position: absolute;\n  inset: 2rem 1rem; /* top/bottom: 2rem, left/right: 1rem */\n}"
+    }
+  ],
+  "realWorldUsage": "Absolutely positioned overlays on images and cards, pseudo-element fills (position: absolute; inset: 0 on ::before or ::after), and any positioned element that should completely cover its parent. Also available as logical variants: inset-inline and inset-block."
+}

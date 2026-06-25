@@ -1,0 +1,18 @@
+{
+  "id": "prefers-color-scheme",
+  "title": "prefers-color-scheme",
+  "category": "Modern CSS",
+  "difficulty": "intermediate",
+  "order": 250,
+  "description": "A media feature that responds to the user's system dark/light mode preference. The same component can adapt to both modes in pure CSS — no JavaScript theme switching needed. Widely available since 2020.",
+  "oldWay": "/* Required JavaScript to read and apply a class */\nconst prefersDark = window.matchMedia('(prefers-color-scheme: dark)');\ndocument.body.classList.toggle('dark', prefersDark.matches);\nprefersDark.addEventListener('change', (e) => {\n  document.body.classList.toggle('dark', e.matches);\n});\n/* .dark .card { background: #1e293b; color: #e2e8f0; } */",
+  "modernWay": "@media (prefers-color-scheme: dark) {\n  .card {\n    background: #1e293b;\n    color: #e2e8f0;\n    border-color: #334155;\n  }\n}",
+  "html": "<div class=\"card\">\n  <strong class=\"title\">Adaptive Card</strong>\n  <p class=\"body\">This card responds to your system's color scheme preference. Try toggling dark mode in your OS or browser settings — or use DevTools (Rendering tab &rarr; Emulate prefers-color-scheme).</p>\n</div>",
+  "startingCSS": ".card {\n  background: #f8fafc;\n  color: #0f172a;\n  border: 1px solid #e2e8f0;\n  border-radius: 10px;\n  padding: 1.5rem;\n  max-width: 400px;\n  margin-inline: auto;\n}\n\n.title {\n  display: block;\n  font-size: 1rem;\n  margin-bottom: 0.5rem;\n}\n\n.body {\n  margin: 0;\n  font-size: 0.875rem;\n  line-height: 1.6;\n  color: #64748b;\n}\n\n/* Add @media (prefers-color-scheme: dark) here */",
+  "challenge": "The card has light styles by default. Add a @media (prefers-color-scheme: dark) block that gives .card a dark background (#1e293b) and light text (#e2e8f0) when the system is in dark mode.",
+  "targetSelector": ".card",
+  "expectedCSS": {
+    "background": "#1e293b"
+  },
+  "realWorldUsage": "The standard approach for supporting dark mode in any CSS codebase — applied at the component level so each element adapts independently, or at :root level to swap CSS custom properties that cascade everywhere. Modern design systems define light/dark token values in @media (prefers-color-scheme: dark) blocks rather than managing a class toggle."
+}

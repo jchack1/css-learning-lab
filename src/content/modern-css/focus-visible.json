@@ -1,0 +1,18 @@
+{
+  "id": "focus-visible",
+  "title": ":focus-visible",
+  "category": "Modern CSS",
+  "difficulty": "intermediate",
+  "order": 225,
+  "description": "Shows a focus indicator only when the browser determines one is needed — typically keyboard navigation or assistive technology. Mouse and touch users don't see the ring, keyboard users always do. Baseline widely available since 2022.",
+  "oldWay": "/* Bad pattern 1: Remove focus for everyone (accessibility failure) */\n.button:focus { outline: none; }\n\n/* Bad pattern 2: JavaScript to track mouse vs keyboard */\ndocument.addEventListener('mousedown', () => {\n  document.body.classList.add('using-mouse');\n});\ndocument.addEventListener('keydown', () => {\n  document.body.classList.remove('using-mouse');\n});\n.button:focus { outline: 2px solid #a855f7; }\n.using-mouse .button:focus { outline: none; }",
+  "modernWay": ".button:focus { outline: none; }\n.button:focus-visible {\n  outline: 2px solid #a855f7;\n  outline-offset: 3px;\n}",
+  "html": "<div class=\"container\">\n  <p class=\"hint\">Tab between the buttons to see keyboard focus. Click them to see mouse focus.</p>\n  <div class=\"row\">\n    <button class=\"button\">First</button>\n    <button class=\"button\">Second</button>\n    <button class=\"button\">Third</button>\n  </div>\n</div>",
+  "startingCSS": ".container {\n  padding: 1.5rem;\n  background: #1e293b;\n  border-radius: 10px;\n}\n\n.hint {\n  color: #64748b;\n  font-size: 0.78rem;\n  margin: 0 0 1rem;\n}\n\n.row {\n  display: flex;\n  gap: 0.75rem;\n}\n\n.button {\n  background: #334155;\n  color: #e2e8f0;\n  border: none;\n  padding: 0.6rem 1.25rem;\n  border-radius: 6px;\n  font-size: 0.875rem;\n  font-weight: 500;\n  cursor: pointer;\n  transition: background 0.15s;\n}\n\n.button:hover {\n  background: #475569;\n}\n\n.button:focus {\n  outline: none; /* suppress default */\n}\n\n/* Add .button:focus-visible here */",
+  "challenge": "The buttons suppress all focus outlines. Add .button:focus-visible { outline: 2px solid #a855f7; outline-offset: 3px; } so keyboard users see a clear ring but mouse clicks stay clean.",
+  "targetSelector": ".button:focus-visible",
+  "expectedCSS": {
+    "outline-offset": "3px"
+  },
+  "realWorldUsage": "Universal best practice for interactive elements — buttons, links, form controls, and custom focusable components. It replaced the old pattern of checking JavaScript input modality. Most modern design systems apply :focus-visible globally as part of their reset layer."
+}

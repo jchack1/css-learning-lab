@@ -146,6 +146,42 @@
   flex: 1;
 }
 
+.realWorldBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  padding: 0.45rem 0.875rem;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-text-faint);
+  font-size: 0.75rem;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.realWorldBtn:hover {
+  border-color: var(--color-accent-border);
+  color: var(--color-text);
+}
+
+.realWorldContent {
+  margin-top: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.realWorldText {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+
 @keyframes rainbowBorder {
   0%   { border-color: #f87171; box-shadow: 0 0 8px rgba(248, 113, 113, 0.5); }
   16%  { border-color: #fb923c; box-shadow: 0 0 8px rgba(251, 146,  60, 0.5); }

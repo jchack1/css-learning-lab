@@ -20,5 +20,6 @@
       "description": "pretty prevents orphaned words on the last line of a paragraph — it only adjusts the final lines, not the whole block. Use balance for short headings where overall evenness matters; use pretty for longer body text where only the ending looks awkward.",
       "css": ".body {\n  text-wrap: pretty;\n}"
     }
-  ]
+  ],
+  "realWorldUsage": "Most valuable for CMS-driven or dynamically generated headings where line breaks can't be controlled manually. A common pattern is applying it once globally — h1, h2, h3 { text-wrap: balance; } — and letting the browser handle awkward wrapping at every size and viewport width without any further attention."
 }

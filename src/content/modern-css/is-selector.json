@@ -1,0 +1,18 @@
+{
+  "id": "is-selector",
+  "title": ":is()",
+  "category": "Modern CSS",
+  "difficulty": "intermediate",
+  "order": 170,
+  "description": "Matches any element in a selector list within a single rule. It collapses repetitive selector groups and takes the specificity of its most specific argument.",
+  "oldWay": "/* Three separate rules for the same style */\nh2 a,\nh3 a,\nh4 a {\n  color: #a855f7;\n}\n\n/* Gets messier with context prefixes */\n.post h2 a,\n.post h3 a,\n.post h4 a {\n  text-decoration: none;\n}",
+  "modernWay": ":is(h2, h3, h4) a {\n  color: #a855f7;\n}\n\n.post :is(h2, h3, h4) a {\n  text-decoration: none;\n}",
+  "html": "<article class=\"post\">\n  <h2>Post Title <a href=\"#\">with a link</a></h2>\n  <p>Normal paragraph with a <a href=\"#\">regular link</a>.</p>\n  <h3>Subsection <a href=\"#\">another link</a></h3>\n  <p>More content and a <a href=\"#\">paragraph link</a>.</p>\n</article>",
+  "startingCSS": ".post {\n  padding: 1.5rem;\n  background: #1e293b;\n  border-radius: 10px;\n  color: #e2e8f0;\n  max-width: 500px;\n  font-size: 0.9rem;\n  line-height: 1.6;\n}\n\n.post h2, .post h3 {\n  margin: 0 0 0.5rem;\n}\n\n.post a {\n  color: #e2e8f0;\n  text-decoration: none;\n}\n\n.post p a {\n  color: #94a3b8;\n  text-decoration: underline;\n}\n\n/* Style heading links with :is() below */",
+  "challenge": "Paragraph links are gray, but heading links look identical to body text. Write a single rule using `.post :is(h2, h3) a` to target only heading links and turn them purple (#a855f7).",
+  "targetSelector": ".post :is(h2, h3) a",
+  "expectedCSS": {
+    "color": "#a855f7"
+  },
+  "realWorldUsage": "Most useful in component stylesheets with multiple element variants: :is(.card, .panel, .modal) .title targets titles in any of those containers without repeating the declaration. Also common for form normalization: :is(input, textarea, select) { border: 1px solid #ccc; } applies consistent styles across all form controls in one rule."
+}

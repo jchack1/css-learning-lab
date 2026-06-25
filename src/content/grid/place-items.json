@@ -1,0 +1,25 @@
+{
+  "id": "place-items",
+  "title": "place-items",
+  "category": "Grid",
+  "difficulty": "beginner",
+  "order": 110,
+  "description": "Shorthand for align-items and justify-items on a grid container. Setting place-items: center is the most concise way to center a child both horizontally and vertically.",
+  "oldWay": "/* The classic absolute-centering hack */\n.container {\n  position: relative;\n}\n.child {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}",
+  "modernWay": ".container {\n  display: grid;\n  place-items: center;\n}",
+  "html": "<div class=\"container\">\n  <div class=\"card\">\n    <strong>Perfectly centered</strong>\n    <p>Both axes, one property</p>\n  </div>\n</div>",
+  "startingCSS": ".container {\n  display: grid;\n  height: 280px;\n  background: #1e293b;\n  border-radius: 10px;\n  border: 1px solid #334155;\n}\n\n.card {\n  background: #a855f7;\n  color: white;\n  padding: 1.5rem 2rem;\n  border-radius: 8px;\n  text-align: center;\n}\n\n.card strong {\n  display: block;\n  font-size: 1rem;\n  margin-bottom: 0.25rem;\n}\n\n.card p {\n  margin: 0;\n  opacity: 0.85;\n  font-size: 0.8rem;\n}",
+  "challenge": "The card is stuck in the top-left corner. Center it both horizontally and vertically using a single CSS property on the container.",
+  "targetSelector": ".container",
+  "expectedCSS": {
+    "place-items": "center"
+  },
+  "alternatives": [
+    {
+      "name": "Flexbox centering",
+      "description": "Flexbox requires two properties to achieve the same result. Use this when you already have a flex container and switching to grid would be disruptive.",
+      "css": ".container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}"
+    }
+  ],
+  "realWorldUsage": "The go-to pattern for full-screen hero sections, loading spinners, empty-state illustrations, and modal backdrops — anywhere a single element needs to sit in the center of its container at any size."
+}

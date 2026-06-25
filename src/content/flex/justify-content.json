@@ -20,5 +20,6 @@
       "description": "Add margin-inline-start: auto to a single item to push it to the far end. More precise than space-between when only one item needs to be separated from the rest.",
       "css": ".container {\n  display: flex;\n}\n\n.item:last-child {\n  margin-inline-start: auto;\n}"
     }
-  ]
+  ],
+  "realWorldUsage": "Most commonly seen in navbars (logo on the left, links on the right) and modal footers (cancel on the left, confirm on the right) using space-between. Also used with flex-end to push a group of action buttons to the right of a toolbar or card header."
 }

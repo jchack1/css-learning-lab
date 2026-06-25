@@ -1,0 +1,25 @@
+{
+  "id": "prefers-reduced-motion",
+  "title": "prefers-reduced-motion",
+  "category": "Modern CSS",
+  "difficulty": "intermediate",
+  "order": 255,
+  "description": "A media feature that detects when the user has requested less motion at the OS level. Use it to disable or reduce animations for users who may experience discomfort or seizures from motion. Widely available since 2020.",
+  "oldWay": "/* No clean CSS solution existed.\n   Required JavaScript to check the preference\n   and conditionally apply a class. */\nif (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {\n  document.documentElement.classList.add('reduce-motion');\n}\n/* .reduce-motion * { animation: none !important; } */",
+  "modernWay": "@media (prefers-reduced-motion: reduce) {\n  .spinner {\n    animation: none;\n  }\n}",
+  "html": "<div class=\"scene\">\n  <div class=\"spinner\"></div>\n  <p class=\"note\">This spinner animates by default.<br>Add a media query to stop it for users who prefer reduced motion.<br><small>Test via DevTools → Rendering → Emulate prefers-reduced-motion</small></p>\n</div>",
+  "startingCSS": "@keyframes spin {\n  to { transform: rotate(360deg); }\n}\n\n.scene {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 1.5rem;\n  padding: 2rem;\n  background: #1e293b;\n  border-radius: 10px;\n}\n\n.spinner {\n  width: 48px;\n  height: 48px;\n  border: 4px solid #334155;\n  border-top-color: #a855f7;\n  border-radius: 50%;\n  animation: spin 0.8s linear infinite;\n}\n\n.note {\n  color: #94a3b8;\n  font-size: 0.8rem;\n  text-align: center;\n  margin: 0;\n  line-height: 1.6;\n}\n\n.note small {\n  color: #475569;\n  font-size: 0.72rem;\n}\n\n/* Add @media (prefers-reduced-motion: reduce) here */",
+  "challenge": "The spinner runs continuously. Add a @media (prefers-reduced-motion: reduce) block that sets .spinner's animation to none, stopping it for users who have requested less motion.",
+  "targetSelector": ".spinner",
+  "expectedCSS": {
+    "animation": "none"
+  },
+  "alternatives": [
+    {
+      "name": "Slow instead of stop",
+      "description": "Some designers prefer slowing motion rather than removing it entirely. A very long duration makes the animation almost imperceptible while technically preserving it for contexts where the motion conveys state (like a progress indicator).",
+      "css": "@media (prefers-reduced-motion: reduce) {\n  .spinner {\n    animation-duration: 10s;\n  }\n}"
+    }
+  ],
+  "realWorldUsage": "Looping animations, auto-playing carousels, parallax scroll effects, and page transition animations should all respect prefers-reduced-motion. The WCAG 2.1 guideline 2.3.3 recommends providing a way to disable motion — this media query is the CSS-native approach."
+}

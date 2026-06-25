@@ -1,0 +1,25 @@
+{
+  "id": "min-function",
+  "title": "min()",
+  "category": "Sizing",
+  "difficulty": "intermediate",
+  "order": 150,
+  "description": "min() picks the smallest of its arguments. Most useful for responsive widths that fill available space but never exceed a maximum — without a media query.",
+  "oldWay": "/* Two separate properties required */\n.container {\n  width: 100%;\n  max-width: 600px;\n}",
+  "modernWay": ".container {\n  width: min(100%, 600px);\n}",
+  "html": "<div class=\"outer\">\n  <div class=\"container\">\n    <p>This container fills its parent but stops growing at 600px. Try resizing the preview.</p>\n  </div>\n</div>",
+  "startingCSS": ".outer {\n  background: #0f172a;\n  padding: 2rem;\n  min-height: 200px;\n}\n\n.container {\n  background: #1e293b;\n  border: 2px solid #a855f7;\n  border-radius: 10px;\n  padding: 1.5rem;\n  color: #e2e8f0;\n  /* Set width with min() */\n}\n\n.container p {\n  margin: 0;\n  font-size: 0.9rem;\n  line-height: 1.6;\n}",
+  "challenge": "Make the container fill its parent's width but never exceed 600px — using a single min() expression for the width property, without adding max-width.",
+  "targetSelector": ".container",
+  "expectedCSS": {
+    "width": "min(100%, 600px)"
+  },
+  "alternatives": [
+    {
+      "name": "max() for minimum font sizes",
+      "description": "max() picks the largest value — useful for a font size that grows with the viewport but never drops below a readable minimum. font-size: max(1rem, 2.5vw) scales up on large screens and floors at 1rem on small ones.",
+      "css": "p {\n  font-size: max(1rem, 2.5vw);\n}"
+    }
+  ],
+  "realWorldUsage": "Nearly every centered page layout uses this pattern — the content wrapper should fill narrow screens but stop growing on wide ones. min(100%, 1200px) paired with margin-inline: auto is the modern equivalent of the classic width: 100%; max-width: 1200px; margin: 0 auto combination."
+}

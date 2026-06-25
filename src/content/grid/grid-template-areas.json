@@ -1,0 +1,18 @@
+{
+  "id": "grid-template-areas",
+  "title": "grid-template-areas",
+  "category": "Grid",
+  "difficulty": "intermediate",
+  "order": 120,
+  "description": "Defines a grid layout using named regions written as ASCII art. Each quoted string is a row; repeated names span multiple columns. Elements snap into place using grid-area.",
+  "oldWay": "/* Manually counting grid line numbers */\n.header  { grid-column: 1 / 3; grid-row: 1; }\n.sidebar { grid-column: 1 / 2; grid-row: 2; }\n.main    { grid-column: 2 / 3; grid-row: 2; }\n/* Breaks silently when column count changes */",
+  "modernWay": ".page {\n  grid-template-areas:\n    \"header  header\"\n    \"sidebar main\";\n}\n.header  { grid-area: header; }\n.sidebar { grid-area: sidebar; }\n.main    { grid-area: main; }",
+  "html": "<div class=\"page\">\n  <header class=\"header\">Header</header>\n  <aside class=\"sidebar\">Sidebar</aside>\n  <main class=\"main\">Main</main>\n</div>",
+  "startingCSS": ".page {\n  display: grid;\n  grid-template-columns: 160px 1fr;\n  grid-template-rows: 56px 1fr;\n  gap: 0.75rem;\n  height: 260px;\n  /* Add grid-template-areas here */\n}\n\n.header  { grid-area: header; }\n.sidebar { grid-area: sidebar; }\n.main    { grid-area: main; }\n\n.header {\n  background: #7c3aed;\n  color: white;\n  border-radius: 6px;\n  display: flex;\n  align-items: center;\n  padding: 0 1rem;\n  font-weight: 600;\n  font-size: 0.9rem;\n}\n\n.sidebar {\n  background: #1e293b;\n  border: 1px solid #334155;\n  border-radius: 6px;\n  padding: 1rem;\n  color: #94a3b8;\n  font-size: 0.85rem;\n}\n\n.main {\n  background: #1e293b;\n  border: 1px solid #334155;\n  border-radius: 6px;\n  padding: 1rem;\n  color: #e2e8f0;\n  font-size: 0.9rem;\n}",
+  "challenge": "The elements already know their area names but the layout isn't defined yet. Add grid-template-areas to .page so the header spans both columns on the first row, and sidebar sits left of main on the second row.",
+  "targetSelector": ".page",
+  "expectedCSS": {
+    "grid-template-areas": "\"header header\""
+  },
+  "realWorldUsage": "Common in dashboard shells and page templates where the layout has a named structure. Rearranging for different screen sizes is then a matter of redefining grid-template-areas in a media query, without touching any child element styles."
+}

@@ -2,6 +2,79 @@
 
 ---
 
+### 2026-06-25 — 10 new modern/programmatic CSS lessons
+
+**New lessons added** (`src/content/modern-css/`) — focused on features that previously required Sass/Less or JavaScript:
+
+| Order | Title | Baseline | Difficulty |
+|---|---|---|---|
+| 210 | CSS Nesting (`&`) | newly available 2023 | intermediate |
+| 215 | `@property` | newly available 2024 | advanced |
+| 220 | `:where()` | widely available | intermediate |
+| 225 | `:focus-visible` | widely available 2022 | intermediate |
+| 230 | `text-underline-offset` | widely available 2022 | beginner |
+| 235 | `color-scheme` | newly available 2022 | beginner |
+| 240 | `inset` | widely available 2021 | beginner |
+| 245 | `scale` & `rotate` (individual transforms) | widely available 2022 | intermediate |
+| 250 | `prefers-color-scheme` | widely available 2020 | intermediate |
+| 255 | `prefers-reduced-motion` | widely available 2020 | intermediate |
+
+CSS nesting challenge validates with `targetSelector: ".card"` — the nested `&:hover { border-color }` block content is included in the extracted block and checked with `.includes()`. `@property` uses no `targetSelector` and validates on `syntax: '<number>'` existing in the whole CSS string. `:where()` lesson has no conflicting `.prose h2` rule in startingCSS — the user adds the base rule with zero-specificity, letting `.highlight` override it cleanly. Individual transforms demo shows two side-by-side cards: broken (old `transform:` overwrites the tilt) vs. working (new `scale:` stacks independently). `prefers-color-scheme` and `prefers-reduced-motion` validate on the property value inside the `@media` block — validator finds the selector inside the at-rule via brace-depth traversal. `lesson-index.json` updated.
+
+---
+
+### 2026-06-25 — 5 new modern CSS lessons (post-2022)
+
+**New lessons added** (`src/content/modern-css/`)
+
+| Order | Title | Baseline | Difficulty |
+|---|---|---|---|
+| 185 | accent-color | widely available 2022 | beginner |
+| 190 | scroll-snap (scroll-snap-align) | widely available | intermediate |
+| 195 | backdrop-filter | newly available 2022 | intermediate |
+| 200 | oklch() | newly available 2023 | intermediate |
+| 205 | overscroll-behavior | widely available 2022 | intermediate |
+
+`accent-color` targets the form container with one property. `scroll-snap` pre-fills `scroll-snap-type: x mandatory` on the container; the user adds `scroll-snap-align: start` to cards. `backdrop-filter` uses colored CSS blobs behind a translucent card so the blur effect is immediately visible. `oklch()` shows a 3-swatch palette with a gray placeholder middle swatch; the user completes it with `oklch(65% 0.2 145)`. `overscroll-behavior` uses two nested scroll containers — scrolling the inner panel past its end chains to the outer page, which the user fixes with `contain`. `lesson-index.json` updated.
+
+---
+
+### 2026-06-25 — 10 new lessons
+
+**New lessons added** (`src/content/`)
+
+| Order | Title | Category | Difficulty |
+|---|---|---|---|
+| 100 | align-items | Flexbox | beginner |
+| 110 | place-items | Grid | beginner |
+| 120 | grid-template-areas | Grid | intermediate |
+| 130 | grid-column (span) | Grid | intermediate |
+| 140 | Custom Properties (--var) | Modern CSS | beginner |
+| 150 | min() | Sizing | intermediate |
+| 155 | margin-inline | Modern CSS | beginner |
+| 160 | object-fit | Modern CSS | beginner |
+| 170 | :is() | Modern CSS | intermediate |
+| 180 | position: sticky | Modern CSS | intermediate |
+
+Each lesson includes `oldWay`, `modernWay`, `challenge`, `expectedCSS`, and `realWorldUsage`. Several include `alternatives`. The `css-custom-properties` lesson uses a pre-broken `var(--brand-color, fallback)` pattern so the variable becomes live the moment the user defines it. The `grid-template-areas` lesson validates via a substring check on the `"header header"` row. The `:is()` lesson uses `.post :is(h2, h3) a` as the targetSelector to ensure correct specificity over the `.post a` base rule.
+
+`src/lesson-index.json` updated: 10 new entries added to `covered`, `missing` list revised.
+
+---
+
+### 2026-06-25 — Real-world usage section
+
+**`realWorldUsage` field** (`src/types/lesson.ts`, all 9 lesson JSON files)
+New optional string field on `Lesson`. Added to all current lessons with concrete production scenarios: specific UI patterns, design system conventions, or well-known use cases that answer "when would I actually reach for this?" The field is omitted from lessons where the real-world context is already obvious from the challenge.
+
+**"In the real world" toggle** (`src/components/PropertyInfo/`)
+Collapsible button appears below the Old way / Modern CSS comparison whenever `realWorldUsage` is present. Always visible (not gated behind completion). State resets on lesson change via the existing `key={lesson.id}` on `PropertyInfo`.
+
+**Content-generation guide updated** (`docs/content-generation.md`)
+New `realWorldUsage` section documents when to include the field, format guidance, and what to avoid. Field reference table updated. Quality checklist extended with a `realWorldUsage` line item.
+
+---
+
 ### 2026-06-17 — Initial build
 
 **Project scaffold**

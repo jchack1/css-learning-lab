@@ -9,6 +9,7 @@ interface PropertyInfoProps {
 
 export function PropertyInfo({ lesson, isCompleted }: PropertyInfoProps) {
   const [showAlternatives, setShowAlternatives] = useState(false);
+  const [showRealWorld, setShowRealWorld] = useState(false);
   const hasAlternatives = isCompleted && (lesson.alternatives?.length ?? 0) > 0;
 
   return (
@@ -44,6 +45,22 @@ export function PropertyInfo({ lesson, isCompleted }: PropertyInfoProps) {
           <pre className={styles.code}><code>{lesson.modernWay}</code></pre>
         </div>
       </div>
+
+      {lesson.realWorldUsage && (
+        <>
+          <button
+            className={styles.realWorldBtn}
+            onClick={() => setShowRealWorld(v => !v)}
+          >
+            {showRealWorld ? '▴' : '▾'} In the real world
+          </button>
+          {showRealWorld && (
+            <div className={styles.realWorldContent}>
+              <p className={styles.realWorldText}>{lesson.realWorldUsage}</p>
+            </div>
+          )}
+        </>
+      )}
 
       {hasAlternatives && (
         <button

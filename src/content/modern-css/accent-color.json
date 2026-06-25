@@ -1,0 +1,18 @@
+{
+  "id": "accent-color",
+  "title": "accent-color",
+  "category": "Modern CSS",
+  "difficulty": "beginner",
+  "order": 185,
+  "description": "Sets the color used by the browser's native form controls — checkboxes, radio buttons, range sliders, and progress bars. One property replaces complex custom control CSS. Baseline widely available since 2022.",
+  "oldWay": "/* Custom checkbox — hides native, rebuilds with pseudo-elements */\ninput[type='checkbox'] {\n  appearance: none;\n  width: 16px;\n  height: 16px;\n  border: 2px solid #a855f7;\n  border-radius: 3px;\n  cursor: pointer;\n}\ninput[type='checkbox']:checked {\n  background: #a855f7;\n  /* Checkmark drawn with clip-path or SVG background */\n}",
+  "modernWay": "form {\n  accent-color: #a855f7;\n}",
+  "html": "<form class=\"form\">\n  <label class=\"field\"><input type=\"checkbox\" checked> Checkbox checked</label>\n  <label class=\"field\"><input type=\"checkbox\"> Checkbox unchecked</label>\n  <label class=\"field\"><input type=\"radio\" name=\"r\" checked> Radio selected</label>\n  <label class=\"field\"><input type=\"radio\" name=\"r\"> Radio unselected</label>\n  <label class=\"field\">Range: <input type=\"range\" value=\"65\"></label>\n  <label class=\"field\">Progress: <progress value=\"65\" max=\"100\"></progress></label>\n</form>",
+  "startingCSS": ".form {\n  display: flex;\n  flex-direction: column;\n  gap: 0.75rem;\n  padding: 1.5rem;\n  background: #1e293b;\n  border-radius: 10px;\n  /* Add accent-color here */\n}\n\n.field {\n  display: flex;\n  align-items: center;\n  gap: 0.5rem;\n  color: #e2e8f0;\n  font-size: 0.9rem;\n  cursor: pointer;\n}\n\ninput[type='range'],\nprogress {\n  width: 120px;\n}",
+  "challenge": "All controls use the default browser blue. Set a single property on .form to change every control's accent to purple (#a855f7) — no custom checkbox CSS needed.",
+  "targetSelector": ".form",
+  "expectedCSS": {
+    "accent-color": "#a855f7"
+  },
+  "realWorldUsage": "Design systems use accent-color on a form wrapper or :root to apply brand color to all native inputs at once, avoiding the need for fully custom controls that must replicate focus, keyboard, and accessibility behavior from scratch."
+}

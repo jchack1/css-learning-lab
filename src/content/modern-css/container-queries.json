@@ -20,5 +20,6 @@
       "description": "Use size when a component also needs to respond to its container's height. inline-size is the right default — size is for components placed inside fixed-height containers where vertical space also constrains the layout.",
       "css": ".wrapper {\n  container-type: size;\n}\n\n@container (min-width: 300px) {\n  .card { flex-direction: row; }\n}"
     }
-  ]
+  ],
+  "realWorldUsage": "The real payoff is truly reusable components. A card placed in a narrow sidebar looks different from the same card in a wide main content area — one component, no JavaScript, no separate variants for different contexts. Design systems are increasingly shipping components with built-in container queries so they adapt to wherever they're placed without any external configuration."
 }

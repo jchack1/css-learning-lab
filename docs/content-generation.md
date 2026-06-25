@@ -39,7 +39,8 @@ src/content/
   "targetSelector": ".container",
   "expectedCSS": {
     "gap": "1rem"
-  }
+  },
+  "realWorldUsage": "One or two sentences describing where and why developers actually reach for this property in production code."
 }
 ```
 
@@ -60,6 +61,7 @@ src/content/
 | `challenge` | yes | One clear instruction. Not a question — a task. |
 | `targetSelector` | no | CSS selector the validator checks. Defaults to `.container`. |
 | `expectedCSS` | yes | Property-value pairs the validator checks for. |
+| `realWorldUsage` | no | Where developers actually use this in production. See below. |
 
 ---
 
@@ -228,6 +230,36 @@ Alternative: individual margins — this belongs in `oldWay`, not here
 
 ---
 
+## Real-world usage
+
+Some lessons include a `realWorldUsage` string describing where and why developers actually reach for this property in production code. It is displayed as a collapsible "In the real world" section in the lesson panel, always visible (not gated behind completion).
+
+```json
+"realWorldUsage": "The most universal use is video embeds — aspect-ratio: 16 / 9 on a wrapper keeps any embedded video at the correct ratio at any container width."
+```
+
+### When to include
+
+Include `realWorldUsage` when there is a concrete, common production scenario that is not already covered by `description`, `oldWay`, or `modernWay`. The goal is to help the user answer "when would I actually reach for this?" after completing the lesson.
+
+Good candidates:
+
+- A specific UI pattern the property solves (e.g. "navbar with logo left, links right")
+- A production convention or design system pattern (e.g. "spacing in the container, never on children")
+- A well-known use case distinct from the challenge (e.g. "video embeds" for `aspect-ratio`, which teaches image cards)
+
+### When NOT to include
+
+- If the real-world use is already obvious from the challenge or description, leave it out
+- Do not invent or speculate — only include uses you are confident are common in practice
+- Keep it to one or two sentences; this is context, not a tutorial
+
+### Format
+
+One or two sentences. Name the specific UI pattern or context. Avoid vague generalities like "used in many projects" or "helpful for responsive design."
+
+---
+
 ## Quality checklist
 
 Before committing a lesson:
@@ -241,6 +273,7 @@ Before committing a lesson:
 - [ ] The `targetSelector` and `expectedCSS` match what the validator should check
 - [ ] The lesson fits the existing JSON structure
 - [ ] If `alternatives` are included, they are modern approaches distinct from `oldWay`
+- [ ] If `realWorldUsage` is included, it names a specific production pattern not already covered by description or challenge
 
 ---
 

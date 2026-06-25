@@ -1,0 +1,18 @@
+{
+  "id": "color-scheme",
+  "title": "color-scheme",
+  "category": "Modern CSS",
+  "difficulty": "beginner",
+  "order": 235,
+  "description": "Tells the browser which color scheme an element supports. Setting color-scheme: dark causes the browser to render native controls — inputs, checkboxes, scrollbars — in dark mode, even without custom styles on each one. Baseline newly available since 2022.",
+  "oldWay": "/* Had to style every native control individually */\ninput, select, textarea {\n  background: #1e293b;\n  color: #e2e8f0;\n  border: 1px solid #475569;\n}\n/* Checkboxes and radio buttons couldn't be reliably dark-styled\n   without replacing them entirely */",
+  "modernWay": ".dark-form {\n  color-scheme: dark;\n}",
+  "html": "<div class=\"layout\">\n  <div class=\"form-wrapper light\">\n    <p class=\"label\">Without color-scheme: dark</p>\n    <input type=\"text\" placeholder=\"Text input\">\n    <input type=\"date\">\n    <label><input type=\"checkbox\"> Checkbox</label>\n    <select><option>Select option</option></select>\n  </div>\n  <div class=\"form-wrapper dark\">\n    <p class=\"label\">With color-scheme: dark</p>\n    <input type=\"text\" placeholder=\"Text input\">\n    <input type=\"date\">\n    <label><input type=\"checkbox\"> Checkbox</label>\n    <select><option>Select option</option></select>\n  </div>\n</div>",
+  "startingCSS": ".layout {\n  display: flex;\n  gap: 1rem;\n  padding: 1rem;\n  background: #0f172a;\n  border-radius: 10px;\n}\n\n.form-wrapper {\n  flex: 1;\n  background: #1e293b;\n  border-radius: 8px;\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  gap: 0.6rem;\n}\n\n.label {\n  margin: 0 0 0.25rem;\n  font-size: 0.72rem;\n  font-weight: 600;\n  color: #64748b;\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n}\n\ninput, select {\n  width: 100%;\n  padding: 0.4rem 0.6rem;\n  border-radius: 4px;\n  border: 1px solid #334155;\n  font-size: 0.8rem;\n}\n\nlabel {\n  display: flex;\n  align-items: center;\n  gap: 0.5rem;\n  color: #94a3b8;\n  font-size: 0.8rem;\n}\n\n/* Add color-scheme: dark to .form-wrapper.dark */",
+  "challenge": "The left form has white native controls that look wrong on the dark background. Add color-scheme: dark to .form-wrapper.dark so the browser renders all its native controls in dark mode automatically.",
+  "targetSelector": ".form-wrapper.dark",
+  "expectedCSS": {
+    "color-scheme": "dark"
+  },
+  "realWorldUsage": "Apply color-scheme: dark to the root element of a dark-mode layout instead of manually styling every input, select, scrollbar, and native control. It also improves the rendering of system UI components like date pickers and color pickers in dark contexts."
+}

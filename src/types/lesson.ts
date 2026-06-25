@@ -19,4 +19,5 @@ export interface Lesson {
   expectedCSS: Record<string, string>;
   order?: number;
   alternatives?: AlternativeSolution[];
+  realWorldUsage?: string;
 }

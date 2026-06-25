@@ -1,0 +1,18 @@
+{
+  "id": "individual-transforms",
+  "title": "scale & rotate",
+  "category": "Modern CSS",
+  "difficulty": "intermediate",
+  "order": 245,
+  "description": "translate, rotate, and scale are now individual CSS properties, separate from the transform shorthand. They stack independently — adding scale on hover no longer wipes out a rotate applied elsewhere. Baseline widely available since 2022.",
+  "oldWay": "/* transform is a single property — they overwrite each other */\n.card {\n  transform: rotate(-3deg);\n}\n.card:hover {\n  transform: scale(1.05);\n  /* The rotate is gone — transform is now only scale */\n}",
+  "modernWay": ".card {\n  rotate: -3deg;\n}\n.card:hover {\n  scale: 1.05;\n  /* rotate is untouched — they are independent properties */\n}",
+  "html": "<div class=\"demo\">\n  <div class=\"card broken\">\n    <strong>Old way</strong>\n    <p>Hover — the tilt disappears when scale kicks in.</p>\n    <small>transform: scale() overwrites transform: rotate()</small>\n  </div>\n  <div class=\"card modern\">\n    <strong>New way</strong>\n    <p>Hover — the tilt stays while the card grows.</p>\n    <small>scale and rotate are independent</small>\n  </div>\n</div>",
+  "startingCSS": ".demo {\n  display: flex;\n  gap: 1.5rem;\n  padding: 2rem;\n  background: #0f172a;\n  border-radius: 12px;\n  justify-content: center;\n}\n\n.card {\n  width: 180px;\n  background: #1e293b;\n  border: 1px solid #334155;\n  border-radius: 10px;\n  padding: 1.25rem;\n  text-align: center;\n  color: #e2e8f0;\n  cursor: pointer;\n  transition: scale 0.2s, transform 0.2s;\n}\n\n.card strong {\n  display: block;\n  font-size: 0.9rem;\n  margin-bottom: 0.5rem;\n}\n\n.card p {\n  font-size: 0.75rem;\n  color: #94a3b8;\n  margin: 0 0 0.5rem;\n  line-height: 1.4;\n}\n\n.card small {\n  font-size: 0.65rem;\n  color: #475569;\n  font-style: italic;\n}\n\n/* Old way: transform property overwrites itself */\n.broken { transform: rotate(-3deg); }\n.broken:hover { transform: scale(1.08); }\n\n/* New way: individual properties stack */\n.modern { rotate: -3deg; }\n.modern:hover {\n  /* Add scale: 1.08 here — the rotate stays */\n}",
+  "challenge": "The right card uses the individual rotate property for its tilt. Add scale: 1.08 to .modern:hover so it grows on hover while keeping the rotation — something the old transform shorthand can't do.",
+  "targetSelector": ".modern:hover",
+  "expectedCSS": {
+    "scale": "1.08"
+  },
+  "realWorldUsage": "Interactive cards and gallery items that have a decorative tilt and need a scale-on-hover effect, independent rotate and translate animations on the same element, and any case where you want to transition only one transform dimension without affecting the others — previously required transform lists in the shorthand or JavaScript."
+}

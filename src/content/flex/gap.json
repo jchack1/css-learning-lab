@@ -13,5 +13,6 @@
   "targetSelector": ".container",
   "expectedCSS": {
     "gap": "1rem"
-  }
+  },
+  "realWorldUsage": "In component libraries, gap has replaced most margin-on-children patterns. The key principle is that spacing belongs in the container, not the children — components without built-in margins can be dropped into any layout and spaced however the parent needs, with no overrides required."
 }

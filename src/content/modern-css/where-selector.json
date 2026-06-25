@@ -1,0 +1,18 @@
+{
+  "id": "where-selector",
+  "title": ":where()",
+  "category": "Modern CSS",
+  "difficulty": "intermediate",
+  "order": 220,
+  "description": "Works like :is() — matches any selector in its list — but always contributes zero specificity. Base styles written with :where() can be overridden by any class selector, making them safe as defaults.",
+  "oldWay": "/* .prose h2 has specificity (0,1,1) */\n.prose h2 { color: #a855f7; }\n\n/* .highlight only has (0,1,0) — it LOSES */\n.highlight { color: #22d3ee; }\n\n/* Fix required !important or more specific overrides */\n.prose h2.highlight { color: #22d3ee; }",
+  "modernWay": "/* :where(.prose) h2 has specificity (0,0,1) */\n:where(.prose) h2 { color: #a855f7; }\n\n/* .highlight has (0,1,0) — it WINS */\n.highlight { color: #22d3ee; }",
+  "html": "<article class=\"prose\">\n  <h2>Default heading</h2>\n  <h2 class=\"highlight\">Highlighted — should be cyan</h2>\n  <h2>Another default heading</h2>\n  <h2 class=\"highlight\">Also highlighted — should be cyan</h2>\n</article>",
+  "startingCSS": ".prose {\n  padding: 1.5rem;\n  background: #1e293b;\n  border-radius: 10px;\n}\n\n/* Base heading style — use :where() so .highlight can override it */\n/* :where(.prose) h2 { color: #a855f7; margin: 0 0 0.75rem; font-size: 1rem; } */\n\n.highlight {\n  color: #22d3ee;\n}",
+  "challenge": "The highlighted headings should be cyan but there are no base heading styles yet. Add :where(.prose) h2 { color: #a855f7; } as the base rule — its zero specificity means .highlight (a plain class selector) can still override it.",
+  "targetSelector": ":where(.prose) h2",
+  "expectedCSS": {
+    "color": "#a855f7"
+  },
+  "realWorldUsage": "Design system reset layers — base typographic styles, spacing resets, and form defaults are written with :where() so any component class can override them without needing higher specificity or !important. It is the CSS equivalent of Sass's !default: a value that applies unless something else is present."
+}

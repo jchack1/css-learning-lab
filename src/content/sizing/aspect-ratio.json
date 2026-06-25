@@ -13,5 +13,6 @@
   "targetSelector": ".image",
   "expectedCSS": {
     "aspect-ratio": "1 / 1"
-  }
+  },
+  "realWorldUsage": "The most universal use is video embeds — aspect-ratio: 16 / 9 on a wrapper element keeps any embedded video at the correct ratio at any container width, replacing the old padding-bottom hack entirely. Also standard for product image cards where all thumbnails need to be the same shape, and for avatar images that must stay circular regardless of how they're sized."
 }
