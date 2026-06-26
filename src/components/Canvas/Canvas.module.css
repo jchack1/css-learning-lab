@@ -12,3 +12,10 @@
   border: none;
   display: block;
 }
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex: 0 0 38vh;
+    min-width: unset;
+  }
+}

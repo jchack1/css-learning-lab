@@ -2,6 +2,24 @@
 
 ---
 
+### 2026-06-25 — Mobile-responsive layout
+
+**Sidebar** (`src/components/Sidebar/Sidebar.module.css`)
+On mobile (≤768px), the sidebar switches from a static flex column to a `position: fixed` overlay drawer that slides in/out via `transform` rather than `width`. Sidebar width increases to 260px for better touch targets.
+
+**Overlay backdrop** (`src/App.tsx`, `src/App.module.css`)
+A semi-transparent overlay div renders behind the open sidebar on mobile. Clicking it closes the sidebar. Hidden on desktop via `display: none`; shown only in the mobile media query.
+
+**Stacked layout** (`src/App.module.css`, `src/components/Canvas/Canvas.module.css`, `src/components/LessonPanel/LessonPanel.module.css`)
+On mobile, `main` switches to `flex-direction: column`. Canvas gets a fixed `38vh` height; LessonPanel fills the remaining space. LessonPanel border switches from `border-left` to `border-top` when stacked.
+
+**Default closed on mobile** (`src/App.tsx`)
+`sidebarOpen` initializes to `false` when `window.innerWidth <= 768`, so the menu starts closed on phones. Selecting a lesson on mobile also auto-closes the sidebar.
+
+Desktop layout and behavior are unchanged.
+
+---
+
 ### 2026-06-25 — 10 new modern/programmatic CSS lessons
 
 **New lessons added** (`src/content/modern-css/`) — focused on features that previously required Sass/Less or JavaScript:

@@ -9,7 +9,7 @@ import styles from './App.module.css';
 const lessons = loadLessons();
 
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth > 768);
   const [selectedId, setSelectedId] = useState(lessons[0]?.id ?? '');
   const [userCSS, setUserCSS] = useState(lessons[0]?.startingCSS ?? '');
   const { completedIds, markComplete, isCompleted } = useProgress();
@@ -22,6 +22,7 @@ function App() {
     if (!lesson) return;
     setSelectedId(id);
     setUserCSS(lesson.startingCSS);
+    if (window.innerWidth <= 768) setSidebarOpen(false);
   };
 
   const handlePrev = () => {
@@ -51,6 +52,13 @@ function App() {
       </header>
 
       <main className={styles.main}>
+        {sidebarOpen && (
+          <div
+            className={styles.overlay}
+            onClick={() => setSidebarOpen(false)}
+            aria-hidden="true"
+          />
+        )}
         <Sidebar
           lessons={lessons}
           selectedId={selectedId}
